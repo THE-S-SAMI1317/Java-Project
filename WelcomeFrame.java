@@ -57,9 +57,8 @@ public void actionPerformed(ActionEvent ae)
 {
 	if(ae.getSource()==startbtn)
 	{
-		this.setVisible(false);
-		WelcomeFrame f1=new WelcomeFrame();
-		f1.setVisible(true);
+		new LoginPage();
+		this.dispose();
 	}
 }
 }
