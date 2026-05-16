@@ -8,11 +8,17 @@ public class LoginPage extends JFrame implements MouseListener, ActionListener
     JLabel titleLbl, namelbl, passlbl, imglbl, taglineLbl, loginTitleLbl, registerLbl;
     JTextField namefld;
     JPasswordField passfld;
-    JButton logbtn;
+    JButton logbtn , registerbtn;;
     JPanel panel, leftPanel, rightPanel;
     Color titleColor, bgColor, panelBgColor, btnColor;  // WHERE TO CHANGE COLORS
     Font titleFont, myfont;
     ImageIcon img;
+
+    // ✅ Animation variables
+    private Timer typingTimer;
+    private String fullText = "Explore a vast amount of restaurants to satiate your hunger";
+    private String currentText = "";
+    private int charIndex = 0;
 
     public LoginPage()
     {
@@ -55,12 +61,13 @@ public class LoginPage extends JFrame implements MouseListener, ActionListener
         imglbl.setBounds(50, 100, 350, 250);
         leftPanel.add(imglbl);
 
-        // Tagline
-        taglineLbl = new JLabel("Explore a vast amount of restaurants to satiate your hunger");
+        // ✅ Tagline with typing animation
+        taglineLbl = new JLabel("");  // Start empty for animation
         taglineLbl.setBounds(30, 360, 400, 30);
         taglineLbl.setFont(new Font("Cambria", Font.ITALIC, 14));
-        taglineLbl.setForeground(titleColor);  // WHERE TO CHANGE: titleColor
+        taglineLbl.setForeground(titleColor);
         leftPanel.add(taglineLbl);
+
 
         panel.add(leftPanel);
 
@@ -114,18 +121,56 @@ public class LoginPage extends JFrame implements MouseListener, ActionListener
         logbtn.addActionListener(this);
         rightPanel.add(logbtn);
 
-        // Register text
-        registerLbl = new JLabel("Don't have an account? Register");
-        registerLbl.setBounds(40, 330, 250, 40);
-        registerLbl.setFont(new Font("Cambria", Font.PLAIN, 14));
-        registerLbl.setForeground(titleColor);  // WHERE TO CHANGE: titleColor
-        registerLbl.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            // "Don't have an account?" label
+        registerLbl = new JLabel("Don't have an account?");
+        registerLbl.setBounds(80, 325, 150, 25);
+        registerLbl.setFont(new Font("Cambria", Font.PLAIN, 13));
+        registerLbl.setForeground(Color.GRAY);
         rightPanel.add(registerLbl);
+
+        // "Register" button (styled to look like a link)
+        registerbtn = new JButton("Register");
+        registerbtn.setBounds(160, 325, 150, 25);  // Positioned right after the label
+        registerbtn.setBackground(Color.WHITE);   // No background
+        registerbtn.setForeground(titleColor);     // Same orange/red color
+        registerbtn.setFont(new Font("Cambria", Font.BOLD , 13));
+        registerbtn.setFocusPainted(false);
+        registerbtn.setBorderPainted(false);       // No border
+        registerbtn.setContentAreaFilled(false);   // Transparent background
+        registerbtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        registerbtn.addMouseListener(this);
+        registerbtn.addActionListener(this);
+        rightPanel.add(registerbtn); 
+
+        // ✅ Start animation AFTER frame is visible
+        this.setVisible(true);
+        startTypingAnimation();  // ✅ Call animation method here
 
         panel.add(rightPanel);
 
         this.add(panel);
         this.setVisible(true);
+    }
+
+    // ✅ Animation method
+    private void startTypingAnimation() {
+        typingTimer = new Timer(50, new ActionListener() 
+        {
+            @Override
+            public void actionPerformed(ActionEvent e) 
+            {
+                if (charIndex < fullText.length()) {
+                    currentText += fullText.charAt(charIndex);
+                    taglineLbl.setText(currentText);
+                    charIndex++;
+                } else 
+                    {
+                         charIndex = 0;
+                         currentText = "";
+                    }
+            }
+        });
+        typingTimer.start();
     }
 
     public void mouseClicked(MouseEvent me) {}
@@ -138,13 +183,27 @@ public class LoginPage extends JFrame implements MouseListener, ActionListener
         {
             logbtn.setBackground(new Color(230, 100, 70));  // Darker on hover
         }
+
+        else if(me.getSource() == registerbtn)
+        {
+            registerbtn.setBackground(Color.WHITE);
+            registerbtn.setForeground(titleColor);
+        }
     }
+
+    
 
     public void mouseExited(MouseEvent me)
     {
         if(me.getSource() == logbtn)
         {
             logbtn.setBackground(btnColor);  // Back to original color
+        }
+
+       else if(me.getSource() == registerbtn)
+        {
+            registerbtn.setBackground(Color.BLUE);
+            registerbtn.setForeground(Color.BLUE);
         }
     }
 
@@ -153,12 +212,25 @@ public class LoginPage extends JFrame implements MouseListener, ActionListener
         if(ae.getSource() == logbtn)
         {
             String s1 = namefld.getText();
-            String s2 = passfld.getText();
+            String s2 = new String(passfld.getPassword());
 
             if(s1.isEmpty() || s2.isEmpty())
             {
                 JOptionPane.showMessageDialog(null, "Fill Up All");
             }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Login Successful!\nEmail: " + s1, "Success", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+ 
+        else if(ae.getSource() == registerbtn)
+        {
+            JOptionPane.showMessageDialog(this, "Register page is not created yet!", "Info", JOptionPane.INFORMATION_MESSAGE);
+            //this.setVisible(false);
+            //Register r1 = new Register();
+            //r1.setVisible(true);
         }
     }
+    
 }

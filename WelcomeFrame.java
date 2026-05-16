@@ -16,7 +16,7 @@ JLabel imglbl;
 public WelcomeFrame()
 {
 	super("Welcome");
-	this.setSize(500,400);
+	this.setSize(850, 450);
 	this.setLocationRelativeTo(null);
 	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
@@ -31,13 +31,13 @@ public WelcomeFrame()
 	panel.setBackground(mycolor);
 	
 	welcomelbl=new JLabel("Welcome");
-	welcomelbl.setBounds(150,80,170,50);
+	welcomelbl.setBounds(365,150,170,50);
 	welcomelbl.setFont(myfont);
-	welcomelbl.setHorizontalAlignment(SwingConstants.CENTER);
+
 	panel.add(welcomelbl);
 	
 	startbtn=new JButton("Get started");
-	startbtn.setBounds(150,180,180,45);
+	startbtn.setBounds(350,300,180,45);
 	startbtn.setFont(btnfont);
 	startbtn.setBackground(btnColor);
 	startbtn.setForeground(Color.WHITE);
@@ -45,7 +45,7 @@ public WelcomeFrame()
 	startbtn.addActionListener(this);
 	panel.add(startbtn);
 
-    img=new ImageIcon("E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/All images/welcome1.jpg");
+    img=new ImageIcon("E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/Final Project/Java-Project/Resources/welcome1.jpg");
 	imglbl=new JLabel(img);
 	imglbl.setBounds(0,0,850,450);
 	panel.add(imglbl);   
