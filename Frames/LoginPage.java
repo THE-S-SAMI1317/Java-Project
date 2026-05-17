@@ -1,14 +1,17 @@
+package Frames;
+
 import java.lang.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import Entries.*;
 
 public class LoginPage extends JFrame implements MouseListener, ActionListener
 {
     JLabel titleLbl, namelbl, passlbl, imglbl, taglineLbl, loginTitleLbl, registerLbl;
     JTextField namefld;
     JPasswordField passfld;
-    JButton logbtn , registerbtn;;
+    JButton logbtn , registerbtn;
     JPanel panel, leftPanel, rightPanel;
     Color titleColor, bgColor, panelBgColor, btnColor;  // WHERE TO CHANGE COLORS
     Font titleFont, myfont;
@@ -221,7 +224,7 @@ public class LoginPage extends JFrame implements MouseListener, ActionListener
             else
             {
                 JOptionPane.showMessageDialog(null, "Login Successful!\nEmail: " + s1, "Success", JOptionPane.INFORMATION_MESSAGE);
-                //for registration 
+                
                 this.setVisible(false);
                 HomePage h1= new HomePage();
                 h1.setVisible(true);
@@ -230,10 +233,10 @@ public class LoginPage extends JFrame implements MouseListener, ActionListener
  
         else if(ae.getSource() == registerbtn)
         {
-            JOptionPane.showMessageDialog(this, "Register page is not created yet!", "Info", JOptionPane.INFORMATION_MESSAGE);
-            //this.setVisible(false);
-            //Register r1 = new Register();
-            //r1.setVisible(true);
+            
+            this.setVisible(false);
+            Register r1 = new Register();
+            r1.setVisible(true);
         }
     }
     

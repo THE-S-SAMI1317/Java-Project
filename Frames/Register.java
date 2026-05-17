@@ -158,30 +158,32 @@ public class Register extends JFrame implements ActionListener, MouseListener
 	public void mouseClicked(MouseEvent me){}
     public void mousePressed(MouseEvent me){}
     public void mouseReleased(MouseEvent me){}
+    public void mouseExited(MouseEvent me){}
+    
 	public void mouseEntered(MouseEvent me) 
 	{
-		if(me.getSourse()==regisBtn)
+		if(me.getSource()==regisBtn)
 		{
 			regisBtn.setBackground(secondryYellow);
 			regisBtn.setForeground(Color.BLACK);
 		}
 		
-		else if(me.getSourse()==logBacBtn)
+		else if(me.getSource()==logBacBtn)
 		{
-			regisBtn.setBackground(secondryYellow);
-			regisBtn.setForeground(Color.BLACK);
+			logBacBtn.setBackground(secondryYellow);
+			logBacBtn.setForeground(Color.BLACK);
 		}
 	}
 	
 	public void actionPerformed(ActionEvent ae)
 	{
-		if(ae.getSourse()==logBacBtn)
+		if(ae.getSource()==logBacBtn)
 		{
 			this.setVisible(false);
-			LoginPage lp1 = new Loginpage();
+			LoginPage lp1 = new LoginPage();
             lp1.setVisible(true);
 		}
-		else if(ae.getSourse()==regisBtn)
+		else if(ae.getSource()==regisBtn)
 		{
 			String s1=uNameFld.getText();
 			String s2=uMailFld.getText();
@@ -195,12 +197,12 @@ public class Register extends JFrame implements ActionListener, MouseListener
 			
 			else
 			{
-				if(s3 == s4)
+				if(s3.equals(s4))
 				{
 					Account a1=new Account(s1,s2,s3);
 					a1.addAccount();
 					this.setVisible(false);
-					LoginPage lp1 = new Loginpage();
+					LoginPage lp1 = new LoginPage();
 					lp1.setVisible(true);
 					
 				}

@@ -1,5 +1,7 @@
 import java.lang.*;
 import javax.swing.*;
+import Frames.*;
+import Entries.*;
 
 public class Start
 {
