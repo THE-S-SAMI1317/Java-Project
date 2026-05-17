@@ -125,14 +125,14 @@ public class Register extends JFrame //implements ActionListener, MouseListener
 		// Register Button
 		regisBtn = new JButton("Register");
 		regisBtn.setBounds(30, 295, 260, 40);
-		regisBtn.setBackground(secondryYellow);
+		regisBtn.setBackground(primaryOrange);
 		regisBtn.setForeground(Color.WHITE);
 		regisBtn.setFont(reBtnFnt);
 		//regisBtn.addMouseListener(this);
 		//regisBtn.addActionListener(this);
 		rightPanel.add(regisBtn);
 		
-		// Login page back Label (Positioned at bottom left)
+		// Login page back Label
 		qLogLbl = new JLabel("Already have an account?");
 		qLogLbl.setBounds(40, 345, 160, 30);
 		qLogLbl.setForeground(txtBlu);
@@ -142,11 +142,11 @@ public class Register extends JFrame //implements ActionListener, MouseListener
 		// Login Page back Button
 		logBacBtn = new JButton("Login");
 		logBacBtn.setBounds(200, 345, 80, 30); 
-		logBacBtn.setBackground(secondryYellow);
+		logBacBtn.setBackground(primaryOrange);
 		logBacBtn.setForeground(Color.WHITE);
 		logBacBtn.setFont(txtFnt);
-		//logBacBtn.addMouseListener(this);
-		//logBacBtn.addActionListener(this);
+		logBacBtn.addMouseListener(this);
+		logBacBtn.addActionListener(this);
 		rightPanel.add(logBacBtn);
 		
 		panel.add(rightPanel);
@@ -154,7 +154,7 @@ public class Register extends JFrame //implements ActionListener, MouseListener
 		this.add(panel);
 	}
 	
-	/*public void mouseClicked(MouseEvent me){}
+	public void mouseClicked(MouseEvent me){}
     public void mousePressed(MouseEvent me){}
     public void mouseReleased(MouseEvent me){}
 	public void mouseEntered(MouseEvent me) 
@@ -171,6 +171,6 @@ public class Register extends JFrame //implements ActionListener, MouseListener
 			regisBtn.setForeground():
 		}
 	}
-	*/
+	
     
 }
