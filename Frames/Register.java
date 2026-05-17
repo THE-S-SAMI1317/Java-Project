@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 import Entries.*;
 
-public class Register extends JFrame //implements ActionListener, MouseListener
+public class Register extends JFrame implements ActionListener, MouseListener
 {
 	JLabel logoLbl, regisLbl, uNameLbl, uMailLbl, passLbl, rePassLbl, messageRLbl, qLogLbl;
 	JPasswordField passFld, rePassFld;
@@ -15,6 +15,7 @@ public class Register extends JFrame //implements ActionListener, MouseListener
 	JPanel panel, rightPanel, leftPanel;
 	Color primaryOrange, secondryYellow, backgrdWhite1, backgrdWhite2, txtBlu;
 	Font logoFnt, pgTitleFnt, secTitleFnt, txtFnt, reBtnFnt;
+	ImageIcon logoIcon;
 	
 	public Register()
 	{
@@ -128,8 +129,8 @@ public class Register extends JFrame //implements ActionListener, MouseListener
 		regisBtn.setBackground(primaryOrange);
 		regisBtn.setForeground(Color.WHITE);
 		regisBtn.setFont(reBtnFnt);
-		//regisBtn.addMouseListener(this);
-		//regisBtn.addActionListener(this);
+		regisBtn.addMouseListener(this);
+		regisBtn.addActionListener(this);
 		rightPanel.add(regisBtn);
 		
 		// Login page back Label
@@ -161,14 +162,55 @@ public class Register extends JFrame //implements ActionListener, MouseListener
 	{
 		if(me.getSourse()==regisBtn)
 		{
-			regisBtn.setBackground();
-			regisBtn.setForeground():
+			regisBtn.setBackground(secondryYellow);
+			regisBtn.setForeground(Color.BLACK);
 		}
 		
 		else if(me.getSourse()==logBacBtn)
 		{
-			regisBtn.setBackground();
-			regisBtn.setForeground():
+			regisBtn.setBackground(secondryYellow);
+			regisBtn.setForeground(Color.BLACK);
+		}
+	}
+	
+	public void actionPerformed(ActionEvent ae)
+	{
+		if(ae.getSourse()==logBacBtn)
+		{
+			this.setVisible(false);
+			LoginPage lp1 = new Loginpage();
+            lp1.setVisible(true);
+		}
+		else if(ae.getSourse()==regisBtn)
+		{
+			String s1=uNameFld.getText();
+			String s2=uMailFld.getText();
+			String s3=passFld.getText();
+			String s4=rePassFld.getText();
+			
+			if(s1.isEmpty() || s2.isEmpty() || s3.isEmpty() || s4.isEmpty())
+			{
+				JOptionPane.showMessageDialog(null,"Fill out all the Details");
+			}
+			
+			else
+			{
+				if(s3 == s4)
+				{
+					Account a1=new Account(s1,s2,s3);
+					a1.addAccount();
+					this.setVisible(false);
+					LoginPage lp1 = new Loginpage();
+					lp1.setVisible(true);
+					
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null,"Re-entered Password does not match");
+				}
+					
+				
+			}
 		}
 	}
 	
