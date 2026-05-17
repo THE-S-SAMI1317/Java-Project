@@ -46,7 +46,7 @@ public WelcomeFrame()
 	startbtn.addActionListener(this);
 	panel.add(startbtn);
 
-    img=new ImageIcon("E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/Final Project/Java-Project/Resources/welcome2.jpg");
+    img=new ImageIcon(getClass().getResource("/Resources/welcome2.jpg"));
 	imglbl=new JLabel(img);
 	imglbl.setBounds(0,0,850,450);
 	panel.add(imglbl);   

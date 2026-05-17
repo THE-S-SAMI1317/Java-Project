@@ -36,9 +36,7 @@ public class HomePage extends JFrame
         setLocationBtn.setFont(new Font("Cambria", Font.BOLD, 16));
         setLocationBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // This will navigate to profile page
                 JOptionPane.showMessageDialog(null, "Opening Profile Page...");
-                // Later you can do: new ProfilePage().setVisible(true);
             }
         });
         topPanel.add(setLocationBtn, BorderLayout.EAST);
@@ -77,16 +75,13 @@ public class HomePage extends JFrame
 
         logoutBtn.addActionListener(new ActionListener() 
         {
-        public void actionPerformed(ActionEvent e) 
-    {
-        // 1. Open the Login Page
-        LoginPage loginPage = new LoginPage();
-        loginPage.setVisible(true);
-        
-        // 2. Close the current HomePage
-        dispose(); 
-    }
-    });
+            public void actionPerformed(ActionEvent e) 
+            {
+                LoginPage loginPage = new LoginPage();
+                loginPage.setVisible(true);
+                dispose(); 
+            }
+        });
         
         add(sidebarPanel, BorderLayout.WEST);
         
@@ -107,23 +102,20 @@ public class HomePage extends JFrame
         JPanel categoriesGrid = new JPanel();
         categoriesGrid.setBackground(new Color(253, 245, 230));
         
-        // Burger
-        JPanel burgerPanel = createFoodItem("Burger", "E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/Final Project/Java-Project/Resources/Burger.jpg");
+        // Burger -
+        JPanel burgerPanel = createFoodItem("Burger", "/Resources/Burger.jpg");
         categoriesGrid.add(burgerPanel);
         
         // Pizza
-        JPanel pizzaPanel = createFoodItem("Pizza", "E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/Final Project/Java-Project/Resources/Pizza.jpg");
+        JPanel pizzaPanel = createFoodItem("Pizza", "/Resources/Pizza.jpg");
         categoriesGrid.add(pizzaPanel);
         
-      
-        // Drinks
-        JPanel drinksPanel = createFoodItem("Drinks", "E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/Final Project/Java-Project/Resources/Drinks.jpg");
+        // Drinks -
+        JPanel drinksPanel = createFoodItem("Drinks", "/Resources/Drinks.jpg");
         categoriesGrid.add(drinksPanel);
         
-       
-        
         // Kacchi
-        JPanel kacchiPanel = createFoodItem("Kacchi", "E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/Final Project/Java-Project/Resources/kacchi.jpg");
+        JPanel kacchiPanel = createFoodItem("Kacchi", "/Resources/kacchi.jpg");
         categoriesGrid.add(kacchiPanel);
         
         mainPanel.add(categoriesGrid);
@@ -138,28 +130,23 @@ public class HomePage extends JFrame
         
         // Restaurants Grid Panel
         JPanel restaurantsGrid = new JPanel();
-
         restaurantsGrid.setBackground(new Color(253, 245, 230));
         
         // Pizzahut
-        JPanel pizzahutPanel = createFoodItem("Pizza Hut", "E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/Final Project/Java-Project/Resources/pizza hut.jpg");
+        JPanel pizzahutPanel = createFoodItem("Pizza Hut", "/Resources/pizza_hut.jpg");
         restaurantsGrid.add(pizzahutPanel);
         
-        // Kacchi Bhai
-        JPanel kacchiBhaiPanel = createFoodItem("Kacchi Bhai", "E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/Final Project/Java-Project/Resources/kacci vai.jpg");
+        // Kacchi Bhai 
+        JPanel kacchiBhaiPanel = createFoodItem("Kacchi Bhai", "/Resources/kacci_vai.jpg");
         restaurantsGrid.add(kacchiBhaiPanel);
         
-        // KFC
-        JPanel mfcPanel = createFoodItem("KFC", "E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/Final Project/Java-Project/Resources/kfc.png");
+        // KFC 
+        JPanel mfcPanel = createFoodItem("KFC", "/Resources/kfc.png");
         restaurantsGrid.add(mfcPanel);
         
-    
-        
-        // AIUB CANTEEN
-        JPanel aiubPanel = createFoodItem("AIUB Canteen", "E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/Final Project/Java-Project/Resources/AIUB CANTEEN.jpg");
+        // AIUB CANTEEN 
+        JPanel aiubPanel = createFoodItem("AIUB Canteen", "/Resources/AIUB_CANTEEN.jpg");
         restaurantsGrid.add(aiubPanel);
-        
-        
         
         mainPanel.add(restaurantsGrid);
         
@@ -168,30 +155,33 @@ public class HomePage extends JFrame
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         add(scrollPane, BorderLayout.CENTER);
         
-        setLocationRelativeTo(null); // Center the window
+        setLocationRelativeTo(null);
     }
     
-    // Method to create each food/restaurant item with image and label
+    // Method expects 2 parameters: name and imagePath
     private JPanel createFoodItem(String name, String imagePath) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBackground(new Color(255,165,0));
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        panel.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Make cursor show hand pointer
+        panel.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
-        // Image Label
         JLabel imageLabel = new JLabel();
         imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
         imageLabel.setVerticalAlignment(SwingConstants.CENTER);
         imageLabel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
         
-        // Try to load image, if not found show placeholder
         try {
-            ImageIcon icon = new ImageIcon(imagePath);
+            ImageIcon icon = null;
+            java.net.URL imgURL = getClass().getResource(imagePath);
+            if (imgURL != null) {
+                icon = new ImageIcon(imgURL);
+            } else {
+                icon = new ImageIcon(imagePath);
+            }
             Image img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
             imageLabel.setIcon(new ImageIcon(img));
         } catch (Exception e) {
-            // If image not found, show text placeholder
             imageLabel.setText("Image\nPlaceholder");
             imageLabel.setVerticalTextPosition(SwingConstants.CENTER);
             imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -201,35 +191,26 @@ public class HomePage extends JFrame
         panel.add(imageLabel);
         panel.add(Box.createRigidArea(new Dimension(0, 10)));
         
-        // Name Label
         JLabel nameLabel = new JLabel(name);
         nameLabel.setFont(new Font("Arial", Font.PLAIN, 14));
         nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
         nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(nameLabel);
         
-        // Add click functionality to make it a button
         panel.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                // This will open the item page
                 JOptionPane.showMessageDialog(panel, "Opening " + name + " page...");
-                // Later you can do: new BurgerPage().setVisible(true); or whatever frame you create
             }
             
             public void mouseEntered(MouseEvent e) {
-                panel.setBackground(new Color(255, 200, 0)); // Lighter orange on hover
+                panel.setBackground(new Color(255, 200, 0));
             }
             
             public void mouseExited(MouseEvent e) {
-                panel.setBackground(new Color(255, 165, 0)); // Back to original orange
+                panel.setBackground(new Color(255, 165, 0));
             }
-
-
- 
         });
         
         return panel;
     }
-
-   
 }
