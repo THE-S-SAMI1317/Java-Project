@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class HomePage extends JFrame 
 {
@@ -44,7 +46,7 @@ public class HomePage extends JFrame
         JPanel sidebarPanel = new JPanel();
         sidebarPanel.setLayout(new BoxLayout(sidebarPanel, BoxLayout.Y_AXIS));
         sidebarPanel.setPreferredSize(new Dimension(100, 640));
-        sidebarPanel.setBackground(new Color(255, 215, 0));
+        sidebarPanel.setBackground(new Color(255, 248, 240));
         sidebarPanel.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));
         
         // Profile Button
@@ -69,13 +71,26 @@ public class HomePage extends JFrame
         logoutBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         logoutBtn.setMaximumSize(new Dimension(80, 30));
         sidebarPanel.add(logoutBtn);
+
+        logoutBtn.addActionListener(new ActionListener() 
+        {
+        public void actionPerformed(ActionEvent e) 
+    {
+        // 1. Open the Login Page
+        LoginPage loginPage = new LoginPage();
+        loginPage.setVisible(true);
+        
+        // 2. Close the current HomePage
+        dispose(); 
+    }
+    });
         
         add(sidebarPanel, BorderLayout.WEST);
         
         // ========== MAIN CONTENT PANEL ==========
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-        mainPanel.setBackground(new Color(229, 231, 235));
+        mainPanel.setBackground(new Color(253, 245, 230));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         
         // --- Popular Categories Section ---
@@ -87,7 +102,7 @@ public class HomePage extends JFrame
         
         // Categories Grid Panel
         JPanel categoriesGrid = new JPanel();
-        categoriesGrid.setBackground(new Color(229, 231, 235));
+        categoriesGrid.setBackground(new Color(253, 245, 230));
         
         // Burger
         JPanel burgerPanel = createFoodItem("Burger", "E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/Final Project/Java-Project/Resources/Burger.jpg");
@@ -121,7 +136,7 @@ public class HomePage extends JFrame
         // Restaurants Grid Panel
         JPanel restaurantsGrid = new JPanel();
 
-        restaurantsGrid.setBackground(new Color(229, 231, 235));
+        restaurantsGrid.setBackground(new Color(253, 245, 230));
         
         // Pizzahut
         JPanel pizzahutPanel = createFoodItem("Pizza Hut", "E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/Final Project/Java-Project/Resources/pizza hut.jpg");
@@ -159,6 +174,7 @@ public class HomePage extends JFrame
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBackground(new Color(255,165,0));
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        panel.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Make cursor show hand pointer
         
         // Image Label
         JLabel imageLabel = new JLabel();
@@ -188,6 +204,26 @@ public class HomePage extends JFrame
         nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
         nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(nameLabel);
+        
+        // Add click functionality to make it a button
+        panel.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                // This will open the item page
+                JOptionPane.showMessageDialog(panel, "Opening " + name + " page...");
+                // Later you can do: new BurgerPage().setVisible(true); or whatever frame you create
+            }
+            
+            public void mouseEntered(MouseEvent e) {
+                panel.setBackground(new Color(255, 200, 0)); // Lighter orange on hover
+            }
+            
+            public void mouseExited(MouseEvent e) {
+                panel.setBackground(new Color(255, 165, 0)); // Back to original orange
+            }
+
+
+ 
+        });
         
         return panel;
     }

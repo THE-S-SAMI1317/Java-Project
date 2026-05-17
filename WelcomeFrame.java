@@ -39,13 +39,13 @@ public WelcomeFrame()
 	startbtn=new JButton("Get started");
 	startbtn.setBounds(350,300,180,45);
 	startbtn.setFont(btnfont);
-	startbtn.setBackground(btnColor);
+	startbtn.setBackground(new Color(255,165,0));
 	startbtn.setForeground(Color.WHITE);
 	startbtn.setFocusPainted(false);
 	startbtn.addActionListener(this);
 	panel.add(startbtn);
 
-    img=new ImageIcon("E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/Final Project/Java-Project/Resources/welcome1.jpg");
+    img=new ImageIcon("E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/Final Project/Java-Project/Resources/welcome2.jpg");
 	imglbl=new JLabel(img);
 	imglbl.setBounds(0,0,850,450);
 	panel.add(imglbl);   

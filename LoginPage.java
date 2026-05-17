@@ -39,12 +39,12 @@ public class LoginPage extends JFrame implements MouseListener, ActionListener
 
         panel = new JPanel();
         panel.setLayout(null);
-        panel.setBackground(bgColor);
+        panel.setBackground(new Color(253, 245, 230));
 
         // ========== LEFT SIDE PANEL ==========
         leftPanel = new JPanel();
         leftPanel.setLayout(null);
-        leftPanel.setBackground(bgColor);
+        leftPanel.setBackground(new Color(255, 251, 240));
         leftPanel.setBounds(0, 0, 450, 450);
 
         // Title "HUNGRY TYGER"
@@ -56,7 +56,7 @@ public class LoginPage extends JFrame implements MouseListener, ActionListener
 
         // Image (Tiger with food)
         // WHERE TO CHANGE IMAGE: Replace path below
-        img = new ImageIcon("E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/All images/tiger-food.png");
+        img = new ImageIcon("E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/Final Project/Java-Project/Resources/300x200.png");
         imglbl = new JLabel(img);
         imglbl.setBounds(50, 100, 350, 250);
         leftPanel.add(imglbl);
@@ -74,7 +74,7 @@ public class LoginPage extends JFrame implements MouseListener, ActionListener
         // ========== RIGHT SIDE LOGIN PANEL ==========
         rightPanel = new JPanel();
         rightPanel.setLayout(null);
-        rightPanel.setBackground(panelBgColor);  // WHERE TO CHANGE: panelBgColor
+        rightPanel.setBackground(new Color(255, 251, 240));  
         rightPanel.setBounds(500, 40, 320, 350);
         rightPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 
@@ -113,7 +113,7 @@ public class LoginPage extends JFrame implements MouseListener, ActionListener
         // Login Button (Sign in)
         logbtn = new JButton("Sign in");
         logbtn.setBounds(30, 270, 260, 45);
-        logbtn.setBackground(btnColor);  // WHERE TO CHANGE: btnColor
+        logbtn.setBackground(new Color(230, 90, 60));  // WHERE TO CHANGE: btnColor
         logbtn.setForeground(Color.WHITE);
         logbtn.setFont(new Font("Cambria", Font.PLAIN, 20));
         logbtn.setFocusPainted(false);
