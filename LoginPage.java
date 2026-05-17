@@ -221,6 +221,10 @@ public class LoginPage extends JFrame implements MouseListener, ActionListener
             else
             {
                 JOptionPane.showMessageDialog(null, "Login Successful!\nEmail: " + s1, "Success", JOptionPane.INFORMATION_MESSAGE);
+                //for registration 
+                this.setVisible(false);
+                HomePage h1= new HomePage();
+                h1.setVisible(true);
             }
         }
  

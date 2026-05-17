@@ -1,0 +1,196 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class HomePage extends JFrame 
+{
+    
+    public HomePage() {
+        // Basic frame setup
+        setTitle("Hungry Tyger");
+        setSize(1000, 700);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+        
+        // ========== TOP PANEL ==========
+        JPanel topPanel = new JPanel();
+        topPanel.setLayout(new BorderLayout());
+        topPanel.setPreferredSize(new Dimension(1000, 60));
+        topPanel.setBackground(Color.WHITE);
+        
+        // Title - HUNGRY TYGER
+        JLabel titleLabel = new JLabel("HUNGRY TYGER");
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        titleLabel.setForeground(new Color(200, 50, 50));
+        titleLabel.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 0));
+        topPanel.add(titleLabel, BorderLayout.WEST);
+        
+        // Set Location Button
+        JButton setLocationBtn = new JButton("Set Location");
+        setLocationBtn.setFont(new Font("Cambria", Font.BOLD, 16));
+        setLocationBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // This will navigate to profile page
+                JOptionPane.showMessageDialog(null, "Opening Profile Page...");
+                // Later you can do: new ProfilePage().setVisible(true);
+            }
+        });
+        topPanel.add(setLocationBtn, BorderLayout.EAST);
+        
+        add(topPanel, BorderLayout.NORTH);
+        
+        // ========== SIDEBAR PANEL ==========
+        JPanel sidebarPanel = new JPanel();
+        sidebarPanel.setLayout(new BoxLayout(sidebarPanel, BoxLayout.Y_AXIS));
+        sidebarPanel.setPreferredSize(new Dimension(100, 640));
+        sidebarPanel.setBackground(new Color(255, 215, 0));
+        sidebarPanel.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));
+        
+        // Profile Button
+        JButton profileBtn = new JButton("Profile");
+        profileBtn.setFont(new Font("Arial", Font.PLAIN, 12));
+        profileBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        profileBtn.setMaximumSize(new Dimension(80, 70));
+        sidebarPanel.add(profileBtn);
+        sidebarPanel.add(Box.createRigidArea(new Dimension(0, 20)));
+        
+        // Cart Button
+        JButton cartBtn = new JButton("Cart");
+        cartBtn.setFont(new Font("Arial", Font.PLAIN, 12));
+        cartBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        cartBtn.setMaximumSize(new Dimension(80, 70));
+        sidebarPanel.add(cartBtn);
+        sidebarPanel.add(Box.createVerticalGlue());
+        
+        // Logout Button
+        JButton logoutBtn = new JButton("Logout");
+        logoutBtn.setFont(new Font("Arial", Font.PLAIN, 14));
+        logoutBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        logoutBtn.setMaximumSize(new Dimension(80, 30));
+        sidebarPanel.add(logoutBtn);
+        
+        add(sidebarPanel, BorderLayout.WEST);
+        
+        // ========== MAIN CONTENT PANEL ==========
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+        mainPanel.setBackground(new Color(229, 231, 235));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        
+        // --- Popular Categories Section ---
+        JLabel categoriesTitle = new JLabel("Popular categories");
+        categoriesTitle.setFont(new Font("Arial", Font.BOLD, 20));
+        categoriesTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+        mainPanel.add(categoriesTitle);
+        mainPanel.add(Box.createRigidArea(new Dimension(0, 20)));
+        
+        // Categories Grid Panel
+        JPanel categoriesGrid = new JPanel();
+        categoriesGrid.setBackground(new Color(229, 231, 235));
+        
+        // Burger
+        JPanel burgerPanel = createFoodItem("Burger", "E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/Final Project/Java-Project/Resources/Burger.jpg");
+        categoriesGrid.add(burgerPanel);
+        
+        // Pizza
+        JPanel pizzaPanel = createFoodItem("Pizza", "E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/Final Project/Java-Project/Resources/Pizza.jpg");
+        categoriesGrid.add(pizzaPanel);
+        
+      
+        // Drinks
+        JPanel drinksPanel = createFoodItem("Drinks", "E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/Final Project/Java-Project/Resources/Drinks.jpg");
+        categoriesGrid.add(drinksPanel);
+        
+       
+        
+        // Kacchi
+        JPanel kacchiPanel = createFoodItem("Kacchi", "E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/Final Project/Java-Project/Resources/kacchi.jpg");
+        categoriesGrid.add(kacchiPanel);
+        
+        mainPanel.add(categoriesGrid);
+        mainPanel.add(Box.createRigidArea(new Dimension(0, 30)));
+        
+        // --- Popular Restaurants Section ---
+        JLabel restaurantsTitle = new JLabel("Popular restaurants");
+        restaurantsTitle.setFont(new Font("Arial", Font.BOLD, 20));
+        restaurantsTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+        mainPanel.add(restaurantsTitle);
+        mainPanel.add(Box.createRigidArea(new Dimension(0, 20)));
+        
+        // Restaurants Grid Panel
+        JPanel restaurantsGrid = new JPanel();
+
+        restaurantsGrid.setBackground(new Color(229, 231, 235));
+        
+        // Pizzahut
+        JPanel pizzahutPanel = createFoodItem("Pizza Hut", "E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/Final Project/Java-Project/Resources/pizza hut.jpg");
+        restaurantsGrid.add(pizzahutPanel);
+        
+        // Kacchi Bhai
+        JPanel kacchiBhaiPanel = createFoodItem("Kacchi Bhai", "E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/Final Project/Java-Project/Resources/kacci vai.jpg");
+        restaurantsGrid.add(kacchiBhaiPanel);
+        
+        // KFC
+        JPanel mfcPanel = createFoodItem("KFC", "E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/Final Project/Java-Project/Resources/kfc.png");
+        restaurantsGrid.add(mfcPanel);
+        
+    
+        
+        // AIUB CANTEEN
+        JPanel aiubPanel = createFoodItem("AIUB Canteen", "E:/MY University/2nd semester/FINAL/OOP1/JAVA PROJECT/Final Project/Java-Project/Resources/AIUB CANTEEN.jpg");
+        restaurantsGrid.add(aiubPanel);
+        
+        
+        
+        mainPanel.add(restaurantsGrid);
+        
+        // Add scroll pane for main panel
+        JScrollPane scrollPane = new JScrollPane(mainPanel);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        add(scrollPane, BorderLayout.CENTER);
+        
+        setLocationRelativeTo(null); // Center the window
+    }
+    
+    // Method to create each food/restaurant item with image and label
+    private JPanel createFoodItem(String name, String imagePath) {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setBackground(new Color(255,165,0));
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        
+        // Image Label
+        JLabel imageLabel = new JLabel();
+        imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        imageLabel.setVerticalAlignment(SwingConstants.CENTER);
+        imageLabel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+        
+        // Try to load image, if not found show placeholder
+        try {
+            ImageIcon icon = new ImageIcon(imagePath);
+            Image img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+            imageLabel.setIcon(new ImageIcon(img));
+        } catch (Exception e) {
+            // If image not found, show text placeholder
+            imageLabel.setText("Image\nPlaceholder");
+            imageLabel.setVerticalTextPosition(SwingConstants.CENTER);
+            imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        }
+        
+        imageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(imageLabel);
+        panel.add(Box.createRigidArea(new Dimension(0, 10)));
+        
+        // Name Label
+        JLabel nameLabel = new JLabel(name);
+        nameLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+        nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(nameLabel);
+        
+        return panel;
+    }
+
+   
+}
