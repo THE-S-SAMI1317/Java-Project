@@ -32,7 +32,7 @@ public class Register extends JFrame implements ActionListener, MouseListener
 		txtBlu = new Color(31, 41, 55);
 		
 		// Fonts
-		logoFnt = new Font("Segoe UI", Font.BOLD, 32);
+		logoFnt = new Font("Cambria", Font.BOLD, 32);
 		pgTitleFnt = new Font("Cambria", Font.BOLD, 24);
 		secTitleFnt = new Font("Cambria", Font.PLAIN, 16);
 		txtFnt = new Font("Cambria", Font.PLAIN, 13);
@@ -158,8 +158,6 @@ public class Register extends JFrame implements ActionListener, MouseListener
 	public void mouseClicked(MouseEvent me){}
     public void mousePressed(MouseEvent me){}
     public void mouseReleased(MouseEvent me){}
-    public void mouseExited(MouseEvent me){}
-    
 	public void mouseEntered(MouseEvent me) 
 	{
 		if(me.getSource()==regisBtn)
@@ -175,12 +173,27 @@ public class Register extends JFrame implements ActionListener, MouseListener
 		}
 	}
 	
+	public void mouseExited(MouseEvent me)
+	{
+		if(me.getSource()==regisBtn)
+		{
+			regisBtn.setBackground(primaryOrange);
+			regisBtn.setForeground(Color.WHITE);
+		}
+		
+		else if(me.getSource()==logBacBtn)
+		{
+			logBacBtn.setBackground(primaryOrange);
+			logBacBtn.setForeground(Color.WHITE);
+		}
+	}
+	
 	public void actionPerformed(ActionEvent ae)
 	{
 		if(ae.getSource()==logBacBtn)
 		{
 			this.setVisible(false);
-			LoginPage lp1 = new LoginPage();
+			LoginPage lp1 = new Loginpage();
             lp1.setVisible(true);
 		}
 		else if(ae.getSource()==regisBtn)
@@ -197,12 +210,12 @@ public class Register extends JFrame implements ActionListener, MouseListener
 			
 			else
 			{
-				if(s3.equals(s4))
+				if(s3 == s4)
 				{
 					Account a1=new Account(s1,s2,s3);
 					a1.addAccount();
 					this.setVisible(false);
-					LoginPage lp1 = new LoginPage();
+					LoginPage lp1 = new Loginpage();
 					lp1.setVisible(true);
 					
 				}

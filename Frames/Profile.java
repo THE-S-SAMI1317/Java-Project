@@ -93,36 +93,36 @@ public class Profile extends JFrame implements ActionListener, MouseListener
 		panelA.add(uMailLbl);
 		
 		uMailFld = new JTextField();
-		uMailFld.setBounds();
+		uMailFld.setBounds(350, 170, 450, 30);
 		panelA.add(uMailFld);
 		
 		// Password Label & Field
 		passLbl = new JLabel("Enter New Password");
-		passLbl.setBounds();
+		passLbl.setBounds(125, 240, 200, 30);
 		passLbl.setForeground(txtBlu);
 		passLbl.setFont(secTitleFnt);
 		panelA.add(passLbl);
 		
 		passFld = new JPasswordField();
-		passFld.setBounds();
+		passFld.setBounds(350, 240, 450, 30);
 		passFld.setEchoChar('*');
 		panelA.add(passFld);
 		
 		// Re-enter Password Label & Field
 		rePassLbl = new JLabel("Re-enter New Password");
-		rePassLbl.setBounds();
+		rePassLbl.setBounds(125, 310, 200, 30);
 		rePassLbl.setForeground(txtBlu);
 		rePassLbl.setFont(secTitleFnt);
 		panelA.add(rePassLbl);
 		
 		rePassFld = new JPasswordField();
-		rePassFld.setBounds();
+		rePassFld.setBounds(350, 310, 450, 30);
 		rePassFld.setEchoChar('*');
 		panelA.add(rePassFld);
 		
 		// Update Button
 		updateBtn = new JButton("Update");
-		updateBtn.setBounds();
+		updateBtn.setBounds(225, 420, 140, 50);
 		updateBtn.setBackground(Color.GREEN);
 		updateBtn.setForeground(Color.WHITE);
 		updateBtn.setFont(reBtnFnt);
@@ -132,7 +132,7 @@ public class Profile extends JFrame implements ActionListener, MouseListener
 		
 		// Delete Button
 		deletBtn = new JButton("Delete");
-		deletBtn.setBounds();
+		deletBtn.setBounds(405, 420, 140, 50);
 		deletBtn.setBackground(Color.RED);
 		deletBtn.setForeground(Color.WHITE);
 		deletBtn.setFont(reBtnFnt);
@@ -142,7 +142,7 @@ public class Profile extends JFrame implements ActionListener, MouseListener
 		
 		// back Button
 		bacBtn = new JButton("Back");
-		bacBtn.setBounds(); 
+		bacBtn.setBounds(585, 420, 140, 50); 
 		bacBtn.setBackground(secondryYellow);
 		bacBtn.setForeground(Color.WHITE);
 		bacBtn.setFont(txtFnt);

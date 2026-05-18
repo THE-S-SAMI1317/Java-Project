@@ -7,6 +7,8 @@ import Frames.*;
 
 public class Account
 {
+	public static String currentUser = "";  //Holds logged-in username
+	
 	private String userName;
 	private String userMail;
 	private String pass;
