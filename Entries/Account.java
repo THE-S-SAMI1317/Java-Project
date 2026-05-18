@@ -96,9 +96,11 @@ public class Account
 				if(value[0].equals(uname)&&value[1].equals(umail)&&value[2].equals(upass))
 				{
 					flag=true;
+					break;
 				}
 			}
 			
+			sc.close();
 		}
 		catch(IOException ioe)
 		{
@@ -107,5 +109,78 @@ public class Account
 		
 		return flag;
 		}
+	
+	// Update: finds user by old username, replaces the line
+	public void updateAccount(String oldUserName, String newName, String newMail, String newPass)
+	{
+		try
+		{
+			entryFile = new File("./Data/Data.txt");
+			
+			sc = new Scanner(entryFile);
+			
+			String allData = "";
+			
+			while(sc.hasNextLine())
+			{
+				String line = sc.nextLine();
+				String value[] = line.split("\t");
+				
+				if(value[0].equals(oldUserName)) 
+				{					
+					allData += newName + "\t" + newMail + "\t" + newPass + "\n";
+				} 
+				else 
+				{
+					allData += line + "\n";
+				}
+			}
+			sc.close();
+			
+			
+			reWrite = new FileWriter(entryFile);
+			reWrite.write(allData);
+			reWrite.close();
+		}
+		catch(Exception e)
+		{ 
+			e.printStackTrace();
+		}
+	}
+	
+	// Delete: removes the line that matches username+mail+pass
+	public void deleteAccount(String userName, String userMail, String pass)
+	{
+		try
+		{
+			entryFile = new File("./Data/Data.txt");
+			
+			sc = new Scanner(entryFile);
+			
+			String allData = "";
+			
+			while(sc.hasNextLine())
+			{
+				String line = sc.nextLine();
+				String value[]= line.split("\t");
+				
+				// Keep line ONLY if it does NOT match the account to delete
+				if(!(value[0].equals(userName) && value[1].equals(userMail) && value[2].equals(pass)))
+				{
+					allData += line + "\n";
+				}
+			}
+			sc.close();
+			
+			// Rewrite the file
+			reWrite = new FileWriter(entryFile);
+			reWrite.write(allData);
+			reWrite.close();
+		}
+		catch(Exception e)
+		{ 
+			e.printStackTrace(); 
+		}
+	}
 	
 }
