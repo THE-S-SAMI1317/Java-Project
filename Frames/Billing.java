@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class CheckOut extends JFrame implements ActionListener
+public class Billing extends JFrame implements ActionListener
 {
     JLabel headerLbl, titleLbl, locLbl, addLbl, cityLbl, payLbl, nameLbl, cardLbl, cvvLbl,imglbl;
     JLabel delLbl, expLbl, basicLbl;
@@ -21,7 +21,7 @@ public class CheckOut extends JFrame implements ActionListener
     Font titleFont, labelFont;
     ImageIcon img;
 
-    public CheckOut()
+    public Billing()
     {
         super("Hungry Tyger - Check Out");
         this.setSize(850, 650);
@@ -199,7 +199,7 @@ public class CheckOut extends JFrame implements ActionListener
     public static void main(String[] args) 
     {
         // Launch your first frame
-        CheckOut c1 = new CheckOut();
+        Billing c1 = new Billing();
         c1.setVisible(true);
     }
 }
