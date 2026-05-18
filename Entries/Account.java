@@ -61,6 +61,11 @@ public class Account
 		try
 		{
 			entryFile = new File("./Data/Data.txt");
+
+			if (entryFile.getParentFile() != null && !entryFile.getParentFile().exists()) {
+				entryFile.getParentFile().mkdirs();
+			}
+
 			entryFile.createNewFile();
 			
 			enWrite = new FileWriter(entryFile,true);
@@ -107,5 +112,40 @@ public class Account
 		
 		return flag;
 		}
+	
+
+	public boolean checkIfFileEmpty()
+	{
+		try
+		{
+			entryFile = new File("./Data/Data.txt");
+			
+			if(!entryFile.exists())
+			{
+				return true;
+			}
+			
+			sc = new Scanner(entryFile);
+			boolean hasContent = false;
+			
+			while(sc.hasNextLine())
+			{
+				String line = sc.nextLine();
+				if(!line.trim().isEmpty())
+				{
+					hasContent = true;
+					break;
+				}
+			}
+			sc.close();
+			
+			return !hasContent;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return true;
+		}
+	}
 	
 }
