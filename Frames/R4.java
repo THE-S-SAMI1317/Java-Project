@@ -17,8 +17,8 @@ public class R4	extends JFrame implements ActionListener
     Color primaryOrange, secondryYellow, backgrdWhite1, backgrdWhite2, txtBlu;
     
     
-    int priceChicken = 200;
-    int priceBeef = 300;
+    int priceMojo = 20;
+    int priceClemon = 25;
     
     // Store order details
     ArrayList<String> itemNames = new ArrayList<>();
@@ -28,7 +28,7 @@ public class R4	extends JFrame implements ActionListener
 
     public R4()
 	{
-        super("Hungry Tyger Pizza");
+        super("Hungry Tyger");
         this.setSize(1000, 700);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -49,7 +49,7 @@ public class R4	extends JFrame implements ActionListener
         panelA.setBounds(20, 20, 950, 630);
         
         // Title
-        titleLbl = new JLabel("HUNGRY TYGER");
+        titleLbl = new JLabel("AIUB Canteen");
         titleLbl.setBounds(350, 30, 300, 50);
         titleLbl.setFont(new Font("Cambria", Font.BOLD, 30));
         titleLbl.setForeground(primaryOrange);
@@ -63,13 +63,13 @@ public class R4	extends JFrame implements ActionListener
         backBtn.addActionListener(this);
         panelA.add(backBtn);
         
-        // --- Item 1: Chicken Burger ---
-        itemLbl1 = new JLabel("Chicken Burger");
+        // --- Item 1: Mojo ---
+        itemLbl1 = new JLabel("Mojo");
         itemLbl1.setBounds(100, 120, 200, 30);
         itemLbl1.setFont(new Font("Cambria", Font.PLAIN, 18));
         panelA.add(itemLbl1);
         
-        priceLbl1 = new JLabel("Tk. " + priceChicken);
+        priceLbl1 = new JLabel("Tk. " + priceMojo);
         priceLbl1.setBounds(400, 120, 100, 30);
         priceLbl1.setFont(new Font("Cambria", Font.PLAIN, 18));
         panelA.add(priceLbl1);
@@ -82,13 +82,13 @@ public class R4	extends JFrame implements ActionListener
         qtyFld1.setBounds(720, 120, 50, 30);
         panelA.add(qtyFld1);
         
-        // --- Item 2: Beef Burger ---
-        itemLbl2 = new JLabel("Beef Burger");
+        // --- Item 2: Clemon ---
+        itemLbl2 = new JLabel("Clemon");
         itemLbl2.setBounds(100, 200, 200, 30);
         itemLbl2.setFont(new Font("Cambria", Font.PLAIN, 18));
         panelA.add(itemLbl2);
         
-        priceLbl2 = new JLabel("Tk. " + priceBeef);
+        priceLbl2 = new JLabel("Tk. " + priceClemon);
         priceLbl2.setBounds(400, 200, 100, 30);
         priceLbl2.setFont(new Font("Cambria", Font.PLAIN, 18));
         panelA.add(priceLbl2);
@@ -124,7 +124,7 @@ public class R4	extends JFrame implements ActionListener
 	{
         if (ae.getSource() == backBtn) {
             this.dispose();
-            // new HomePage().setVisible(true);
+            // new HomePage().setVisible(true); NEED TO  ADD
         } 
         else if (ae.getSource() == buyNowBtn) {
             placeOrder();
@@ -152,32 +152,35 @@ public class R4	extends JFrame implements ActionListener
             itemQuantities.clear();
             grandTotal = 0;
             
-            // Add Chicken Burger if quantity > 0
-            if(qty1 > 0) {
-                itemNames.add("Chicken Burger");
-                itemPrices.add(priceChicken);
+            // Add Mojo if quantity > 0
+            if(qty1 > 0) 
+			{
+                itemNames.add("Mojo");
+                itemPrices.add(priceMojo);
                 itemQuantities.add(qty1);
-                grandTotal += qty1 * priceChicken;
+                grandTotal += qty1 * priceMojo;
             }
             
-            // Add Beef Burger if quantity > 0
-            if(qty2 > 0) {
-                itemNames.add("Beef Burger");
-                itemPrices.add(priceBeef);
+            // Add Clemon if quantity > 0
+            if(qty2 > 0) 
+			{
+                itemNames.add("Clemon");
+                itemPrices.add(priceClemon);
                 itemQuantities.add(qty2);
-                grandTotal += qty2 * priceBeef;
+                grandTotal += qty2 * priceClemon;
             }
             
             // Check if any items selected
-            if(itemNames.isEmpty()) {
+            if(itemNames.isEmpty()) 
+			{
                 JOptionPane.showMessageDialog(this, "Please select at least one item!");
                 return;
             }
             
-            /*Open Checkout with order details
+            //Open Checkout with order details
             Checkout checkoutFrame = new Checkout(itemNames, itemPrices, itemQuantities, grandTotal);
             checkoutFrame.setVisible(true);
-            this.dispose(); // Close restaurant frame*/
+            this.dispose(); // Close restaurant frame
             
         } 
 		

@@ -174,7 +174,7 @@ public class R1	extends JFrame implements ActionListener
                 return;
             }
             
-            /*Open Checkout with order details
+            //Open Checkout with order details
             Checkout checkoutFrame = new Checkout(itemNames, itemPrices, itemQuantities, grandTotal);
             checkoutFrame.setVisible(true);
             this.dispose(); // Close restaurant frame*/

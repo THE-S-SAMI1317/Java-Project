@@ -74,7 +74,7 @@ public class R2	extends JFrame implements ActionListener
         priceLbl1.setFont(new Font("Cambria", Font.PLAIN, 18));
         panelA.add(priceLbl1);
         
-        JLabel qtyLabel1 = new JLabel("Quantity:");
+        JLabel qtyLabel1 = new JLabel("Quantity (Max 30):");
         qtyLabel1.setBounds(550, 120, 150, 30);
         panelA.add(qtyLabel1);
         
@@ -82,8 +82,8 @@ public class R2	extends JFrame implements ActionListener
         qtyFld1.setBounds(720, 120, 50, 30);
         panelA.add(qtyFld1);
         
-        // --- Item 2: Beef Burger ---
-        itemLbl2 = new JLabel("Beef Burger");
+        // --- Item 2: Beef Pizza ---
+        itemLbl2 = new JLabel("Beef Pizza");
         itemLbl2.setBounds(100, 200, 200, 30);
         itemLbl2.setFont(new Font("Cambria", Font.PLAIN, 18));
         panelA.add(itemLbl2);
@@ -124,7 +124,7 @@ public class R2	extends JFrame implements ActionListener
 	{
         if (ae.getSource() == backBtn) {
             this.dispose();
-            // new HomePage().setVisible(true);
+            // new HomePage().setVisible(true); NEED TO ADD
         } 
         else if (ae.getSource() == buyNowBtn) {
             placeOrder();
@@ -175,10 +175,10 @@ public class R2	extends JFrame implements ActionListener
                 return;
             }
             
-            /*Open Checkout with order details
+            //Open Checkout with order details
             Checkout checkoutFrame = new Checkout(itemNames, itemPrices, itemQuantities, grandTotal);
             checkoutFrame.setVisible(true);
-            this.dispose(); // Close restaurant frame*/
+            this.dispose(); // Close restaurant frame
             
         } 
 		

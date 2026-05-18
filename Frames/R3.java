@@ -17,8 +17,8 @@ public class R3	extends JFrame implements ActionListener
     Color primaryOrange, secondryYellow, backgrdWhite1, backgrdWhite2, txtBlu;
     
     
-    int priceChicken = 200;
-    int priceBeef = 300;
+    int priceKacchi = 560;
+    int priceTehari = 320;
     
     // Store order details
     ArrayList<String> itemNames = new ArrayList<>();
@@ -63,13 +63,13 @@ public class R3	extends JFrame implements ActionListener
         backBtn.addActionListener(this);
         panelA.add(backBtn);
         
-        // --- Item 1: Chicken Burger ---
-        itemLbl1 = new JLabel("Chicken Burger");
+        // --- Item 1: Kacchi ---
+        itemLbl1 = new JLabel("Kacchi");
         itemLbl1.setBounds(100, 120, 200, 30);
         itemLbl1.setFont(new Font("Cambria", Font.PLAIN, 18));
         panelA.add(itemLbl1);
         
-        priceLbl1 = new JLabel("Tk. " + priceChicken);
+        priceLbl1 = new JLabel("Tk. " + priceKacchi);
         priceLbl1.setBounds(400, 120, 100, 30);
         priceLbl1.setFont(new Font("Cambria", Font.PLAIN, 18));
         panelA.add(priceLbl1);
@@ -82,13 +82,13 @@ public class R3	extends JFrame implements ActionListener
         qtyFld1.setBounds(720, 120, 50, 30);
         panelA.add(qtyFld1);
         
-        // --- Item 2: Beef Burger ---
-        itemLbl2 = new JLabel("Beef Burger");
+        // --- Item 2: Tehari ---
+        itemLbl2 = new JLabel("Tehari");
         itemLbl2.setBounds(100, 200, 200, 30);
         itemLbl2.setFont(new Font("Cambria", Font.PLAIN, 18));
         panelA.add(itemLbl2);
         
-        priceLbl2 = new JLabel("Tk. " + priceBeef);
+        priceLbl2 = new JLabel("Tk. " + priceTehari);
         priceLbl2.setBounds(400, 200, 100, 30);
         priceLbl2.setFont(new Font("Cambria", Font.PLAIN, 18));
         panelA.add(priceLbl2);
@@ -124,7 +124,7 @@ public class R3	extends JFrame implements ActionListener
 	{
         if (ae.getSource() == backBtn) {
             this.dispose();
-            // new HomePage().setVisible(true);
+            // new HomePage().setVisible(true); NEED TO ADD
         } 
         else if (ae.getSource() == buyNowBtn) {
             placeOrder();
@@ -152,20 +152,20 @@ public class R3	extends JFrame implements ActionListener
             itemQuantities.clear();
             grandTotal = 0;
             
-            // Add Chicken Burger if quantity > 0
+            // Add Kacchi if quantity > 0
             if(qty1 > 0) {
-                itemNames.add("Chicken Burger");
-                itemPrices.add(priceChicken);
+                itemNames.add("Kacchi");
+                itemPrices.add(priceKacchi);
                 itemQuantities.add(qty1);
-                grandTotal += qty1 * priceChicken;
+                grandTotal += qty1 * priceKacchi;
             }
             
-            // Add Beef Burger if quantity > 0
+            // Add Tehari if quantity > 0
             if(qty2 > 0) {
-                itemNames.add("Beef Burger");
-                itemPrices.add(priceBeef);
+                itemNames.add("Tehari");
+                itemPrices.add(priceTehari);
                 itemQuantities.add(qty2);
-                grandTotal += qty2 * priceBeef;
+                grandTotal += qty2 * priceTehari;
             }
             
             // Check if any items selected
@@ -174,10 +174,10 @@ public class R3	extends JFrame implements ActionListener
                 return;
             }
             
-            /*Open Checkout with order details
+            //Open Checkout with order details
             Checkout checkoutFrame = new Checkout(itemNames, itemPrices, itemQuantities, grandTotal);
             checkoutFrame.setVisible(true);
-            this.dispose(); // Close restaurant frame*/
+            this.dispose(); // Close restaurant frame
             
         } 
 		
