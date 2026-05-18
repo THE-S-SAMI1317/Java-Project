@@ -1,11 +1,12 @@
 package Frames;
-
+import java.lang.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
-public class Checkout extends JFrame implements ActionListener {
+public class Checkout extends JFrame implements ActionListener 
+{
     
     JPanel panel, panelA;
     JLabel titleLbl, subtitleLbl;
@@ -22,6 +23,20 @@ public class Checkout extends JFrame implements ActionListener {
     
     
     int finalTotal;
+   
+    public Checkout()
+    {
+        super("Hungry Tyger Checkout");
+        this.setSize(800, 700);
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+      
+        
+
+        HomePage hp = new HomePage();
+        hp.setVisible(true);
+    }
 
     public Checkout(ArrayList<String> names, ArrayList<Integer> prices, ArrayList<Integer> quantities, int total)
 	{
@@ -166,16 +181,21 @@ public class Checkout extends JFrame implements ActionListener {
         confirmBtn.setForeground(Color.WHITE);
         confirmBtn.setFont(new Font("Cambria", Font.BOLD, 18));
         confirmBtn.addActionListener(this);
+       
         panelA.add(confirmBtn);
-        
+
+    
         panel.add(panelA);
         this.add(panel);
     }
 
+
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == backBtn) {
+
+           
             this.dispose();
-            //new Restaurant().setVisible(true);
+            new Billing().setVisible(true);
         } 
         else if (e.getSource() == confirmBtn) {
             int confirm = JOptionPane.showConfirmDialog(
@@ -195,7 +215,7 @@ public class Checkout extends JFrame implements ActionListener {
                 
                 this.dispose();
                 // Go back to home or restaurant
-                //new Restaurant().setVisible(true);
+                // new HomePage().setVisible(true);
             }
         }
     }

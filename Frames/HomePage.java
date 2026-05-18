@@ -8,6 +8,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import Entries.*;
 
+
 public class HomePage extends JFrame 
 {
     
@@ -56,13 +57,15 @@ public class HomePage extends JFrame
         profileBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         profileBtn.setMaximumSize(new Dimension(80, 70));
 
-    profileBtn.addActionListener(new ActionListener() {
-    public void actionPerformed(ActionEvent e) {
+    profileBtn.addActionListener(new ActionListener() 
+    {
+    public void actionPerformed(ActionEvent e) 
+    {
         Profile p = new Profile();  // Open Profile page
         p.setVisible(true);
         dispose();
     }
-});
+    });
 
         sidebarPanel.add(profileBtn);
         sidebarPanel.add(Box.createRigidArea(new Dimension(0, 20)));
@@ -74,6 +77,19 @@ public class HomePage extends JFrame
         cartBtn.setMaximumSize(new Dimension(80, 70));
         sidebarPanel.add(cartBtn);
         sidebarPanel.add(Box.createVerticalGlue());
+        cartBtn.addActionListener(new ActionListener()
+        {
+        public void actionPerformed(ActionEvent e)
+        {
+            
+             Checkout c1=new Checkout();
+             c1.setVisible(true);
+            HomePage.this.dispose();
+            
+
+        }
+        
+        });
         
         // Logout Button
         JButton logoutBtn = new JButton("Logout");
@@ -146,7 +162,7 @@ public class HomePage extends JFrame
         restaurantsGrid.add(pizzahutPanel);
         
         // Kacchi Bhai 
-        JPanel kacchiBhaiPanel = createFoodItem("Kacchi Bhai", "/Resources/kacci_vai.jpg");
+        JPanel kacchiBhaiPanel = createFoodItem("Kacchi Vai", "/Resources/kacci_vai.jpg");
         restaurantsGrid.add(kacchiBhaiPanel);
         
         // KFC 
@@ -206,19 +222,51 @@ public class HomePage extends JFrame
         nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(nameLabel);
         
-        panel.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-                JOptionPane.showMessageDialog(panel, "Opening " + name + " page...");
-            }
-            
-            public void mouseEntered(MouseEvent e) {
-                panel.setBackground(new Color(255, 200, 0));
-            }
-            
-            public void mouseExited(MouseEvent e) {
-                panel.setBackground(new Color(255, 165, 0));
-            }
-        });
+panel.addMouseListener(new MouseAdapter() {
+    public void mouseClicked(MouseEvent e) {
+        // ✅ Check which item was clicked
+        if(name.equals("Burger")) {
+            R1 r = new R1();
+            r.setVisible(true);
+        }
+        else if(name.equals("Pizza")) {
+            R2 r = new R2();  // Create R2.java for Pizza
+            r.setVisible(true);
+        }
+        else if(name.equals("Drinks")) {
+            R4 r = new R4();  // Create R3.java for Drinks
+            r.setVisible(true);
+        }
+        else if(name.equals("Kacchi")) {
+            R3 r = new R3();  // Create R4.java for Kacchi
+            r.setVisible(true);
+        }
+        else if(name.equals("Pizza Hut")) {
+            R2 r = new R2();  // Create R5.java for Pizza Hut
+            r.setVisible(true);
+        }
+        else if(name.equals("Kacchi Bhai")) {
+            R3 r = new R3();  // Create R6.java for Kacchi Bhai
+            r.setVisible(true);
+        }
+        else if(name.equals("KFC")) {
+            R1 r = new R1();  // Create R7.java for KFC
+            r.setVisible(true);
+        }
+        else if(name.equals("AIUB Canteen")) {
+            R4 r = new R4();  // Create R8.java for AIUB Canteen
+            r.setVisible(true);
+        }
+    }
+    
+    public void mouseEntered(MouseEvent e) {
+        panel.setBackground(new Color(255, 200, 0));
+    }
+    
+    public void mouseExited(MouseEvent e) {
+        panel.setBackground(new Color(255, 165, 0));
+    }
+});
         
         return panel;
     }

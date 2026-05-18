@@ -1,5 +1,5 @@
 package Frames;
-
+import java.lang.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -195,12 +195,4 @@ public class Billing extends JFrame implements ActionListener
         }
     }
 
-    
-    public static void main(String[] args) 
-    {
-        // Launch your first frame
-        Billing c1 = new Billing();
-        c1.setVisible(true);
-    }
 }
-

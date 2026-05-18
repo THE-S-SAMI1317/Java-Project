@@ -1,5 +1,5 @@
 package Frames;
-
+import java.lang.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -28,7 +28,7 @@ public class R3	extends JFrame implements ActionListener
 
     public R3()
 	{
-        super("Hungry Tyger Pizza");
+        super("Kacchi Vai");
         this.setSize(1000, 700);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -49,7 +49,7 @@ public class R3	extends JFrame implements ActionListener
         panelA.setBounds(20, 20, 950, 630);
         
         // Title
-        titleLbl = new JLabel("HUNGRY TYGER");
+        titleLbl = new JLabel("Kacchi Vai");
         titleLbl.setBounds(350, 30, 300, 50);
         titleLbl.setFont(new Font("Cambria", Font.BOLD, 30));
         titleLbl.setForeground(primaryOrange);
