@@ -86,39 +86,47 @@ public class Account
 			ioe.printStackTrace();
 		}
 	}
-	
-	public boolean getAccount(String uname, String umail, String upass)
-	{
-		boolean flag=false;
-		try
-		{
-			entryFile=new File("./Data/Data.txt");
-			
-			sc=new Scanner(entryFile);
-			
-			while(sc.hasNextLine())
-			{
-				String line=sc.nextLine();
-				String value[]=line.split("\t");
-				if(value[0].equals(uname)&&value[1].equals(umail)&&value[2].equals(upass))
-				{
-					flag=true;
-					break;
-				}
-			}
-			
-			sc.close();
-		}
-		catch(IOException ioe)
-		{
-			ioe.printStackTrace();
-		}
-		
-		return flag;
-		}
-	
 
-		public void deleteAccount(String userName, String userMail, String userPass)
+
+	public boolean getAccount(String email, String password)
+{
+    try 
+    {
+        File f = new File("./Data/Data.txt");
+        
+        if(!f.exists()) {
+            return false;
+        }
+        
+        Scanner sc = new Scanner(f);
+        
+        while(sc.hasNextLine()) 
+        {
+            String line = sc.nextLine();
+            String[] data = line.split("\t");
+            
+            if(data.length >= 3) 
+            {
+                // data[1]=email, data[2]=password
+                if(data[1].equals(email) && data[2].equals(password)) 
+                {
+                    sc.close();
+                    return true;
+                }
+            }
+        }
+        sc.close();
+    } 
+    catch(Exception e) 
+    {
+        e.printStackTrace();
+    }
+    
+    return false;
+}
+	
+	
+	public void deleteAccount(String userName, String userMail, String userPass)
 	{
 		try
 		{

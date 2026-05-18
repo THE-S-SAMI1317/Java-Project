@@ -200,8 +200,8 @@ public class Register extends JFrame implements ActionListener, MouseListener
 		{
 			String s1=uNameFld.getText();
 			String s2=uMailFld.getText();
-			String s3=passFld.getText();
-			String s4=rePassFld.getText();
+			String s3=new String(passFld.getPassword());
+			String s4=new String(rePassFld.getPassword());
 			
 			if(s1.isEmpty() || s2.isEmpty() || s3.isEmpty() || s4.isEmpty())
 			{
@@ -210,10 +210,13 @@ public class Register extends JFrame implements ActionListener, MouseListener
 			
 			else
 			{
-				if(s3 == s4)
+				if(s3.equals(s4))
 				{
 					Account a1=new Account(s1,s2,s3);
 					a1.addAccount();
+
+					JOptionPane.showMessageDialog(null, "Registration Successful!\nPlease login now.");
+
 					this.setVisible(false);
 					LoginPage lp1 = new LoginPage();
 					lp1.setVisible(true);
