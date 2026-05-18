@@ -60,6 +60,7 @@ public class HomePage extends JFrame
     public void actionPerformed(ActionEvent e) {
         Profile p = new Profile();  // Open Profile page
         p.setVisible(true);
+        dispose();
     }
 });
 
