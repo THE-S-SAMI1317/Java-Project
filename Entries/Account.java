@@ -11,7 +11,7 @@ public class Account
 	private String userMail;
 	private String pass;
 	File entryFile;
-	FileWriter enWrite;
+	FileWriter enWrite, reWrite;
 	Scanner sc;
 	
 	public Account()
@@ -101,9 +101,11 @@ public class Account
 				if(value[0].equals(uname)&&value[1].equals(umail)&&value[2].equals(upass))
 				{
 					flag=true;
+					break;
 				}
 			}
 			
+			sc.close();
 		}
 		catch(IOException ioe)
 		{
@@ -112,40 +114,5 @@ public class Account
 		
 		return flag;
 		}
-	
-
-	public boolean checkIfFileEmpty()
-	{
-		try
-		{
-			entryFile = new File("./Data/Data.txt");
-			
-			if(!entryFile.exists())
-			{
-				return true;
-			}
-			
-			sc = new Scanner(entryFile);
-			boolean hasContent = false;
-			
-			while(sc.hasNextLine())
-			{
-				String line = sc.nextLine();
-				if(!line.trim().isEmpty())
-				{
-					hasContent = true;
-					break;
-				}
-			}
-			sc.close();
-			
-			return !hasContent;
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-			return true;
-		}
-	}
 	
 }
