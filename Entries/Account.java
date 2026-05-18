@@ -11,7 +11,7 @@ public class Account
 	private String userMail;
 	private String pass;
 	File entryFile;
-	FileWriter enWrite;
+	FileWriter enWrite, reWrite;
 	Scanner sc;
 	
 	public Account()
