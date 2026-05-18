@@ -1,6 +1,8 @@
 package Frames;
 
 import java.lang.*;
+import java.util.Scanner;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -152,6 +154,8 @@ public class Profile extends JFrame implements ActionListener, MouseListener
 		
 		panel.add(panelA);
 		this.add(panel);
+
+		loadCurrentData();
 		
 	}
 	
@@ -181,7 +185,7 @@ public class Profile extends JFrame implements ActionListener, MouseListener
 	}
 	public void mouseExited(MouseEvent me)
 	{
-		if(me.getSourse()==updateBtn)
+		if(me.getSource()==updateBtn)
 		{
 			updateBtn.setBackground(Color.GREEN);
 			updateBtn.setForeground(Color.WHITE);
@@ -222,7 +226,7 @@ public class Profile extends JFrame implements ActionListener, MouseListener
 				Account.currentUser = "";  // Clear login
 				JOptionPane.showMessageDialog(this, "Deleted!");
 				this.dispose();
-				LoginPage lp2 = new Loginpage();
+				LoginPage lp2 = new LoginPage();
 				lp2.setVisible(true);
 			}
 		}
@@ -243,6 +247,6 @@ public class Profile extends JFrame implements ActionListener, MouseListener
 		}
 	}
 	
-	loadCurrentData(); //cons for profile details
+	 //cons for profile details
 }
 		

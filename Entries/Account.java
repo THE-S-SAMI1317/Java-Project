@@ -117,4 +117,120 @@ public class Account
 		return flag;
 		}
 	
+
+		public void deleteAccount(String userName, String userMail, String userPass)
+	{
+		try
+		{
+			File oldFile = new File("./Data/Data.txt");
+			File tempFile = new File("./Data/temp.txt");
+			
+			Scanner sc = new Scanner(oldFile);
+			FileWriter fw = new FileWriter(tempFile);
+			
+			while(sc.hasNextLine())
+			{
+				String line = sc.nextLine();
+				String[] value = line.split("\t");
+				
+				if(value.length >= 3)
+				{
+					// Write all lines EXCEPT the one to delete
+					if(!(value[0].equals(userName) && value[1].equals(userMail) && value[2].equals(userPass)))
+					{
+						fw.write(line + "\n");
+					}
+				}
+			}
+			
+			sc.close();
+			fw.flush();
+			fw.close();
+			
+			// Replace old file with new file
+			oldFile.delete();
+			tempFile.renameTo(oldFile);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	// ✅ ADD THIS: Update account method
+	public void updateAccount(String oldName, String newName, String newMail, String newPass)
+	{
+		try
+		{
+			File oldFile = new File("./Data/Data.txt");
+			File tempFile = new File("./Data/temp.txt");
+			
+			Scanner sc = new Scanner(oldFile);
+			FileWriter fw = new FileWriter(tempFile);
+			
+			while(sc.hasNextLine())
+			{
+				String line = sc.nextLine();
+				String[] value = line.split("\t");
+				
+				if(value.length >= 3 && value[0].equals(oldName))
+				{
+					// Update this user's data
+					fw.write(newName + "\t" + newMail + "\t" + newPass + "\n");
+				}
+				else
+				{
+					// Keep other users unchanged
+					fw.write(line + "\n");
+				}
+			}
+			
+			sc.close();
+			fw.flush();
+			fw.close();
+			
+			// Replace old file with updated file
+			oldFile.delete();
+			tempFile.renameTo(oldFile);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	// ✅ ADD THIS: Check if file is empty
+	public boolean checkIfFileEmpty()
+	{
+		try
+		{
+			entryFile = new File("./Data/Data.txt");
+			
+			if(!entryFile.exists())
+			{
+				return true;
+			}
+			
+			sc = new Scanner(entryFile);
+			boolean hasContent = false;
+			
+			while(sc.hasNextLine())
+			{
+				String line = sc.nextLine();
+				if(!line.trim().isEmpty())
+				{
+					hasContent = true;
+					break;
+				}
+			}
+			sc.close();
+			
+			return !hasContent;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return true;
+		}
+	}
 }

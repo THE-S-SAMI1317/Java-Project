@@ -55,6 +55,14 @@ public class HomePage extends JFrame
         profileBtn.setFont(new Font("Arial", Font.PLAIN, 12));
         profileBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         profileBtn.setMaximumSize(new Dimension(80, 70));
+
+    profileBtn.addActionListener(new ActionListener() {
+    public void actionPerformed(ActionEvent e) {
+        Profile p = new Profile();  // Open Profile page
+        p.setVisible(true);
+    }
+});
+
         sidebarPanel.add(profileBtn);
         sidebarPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         

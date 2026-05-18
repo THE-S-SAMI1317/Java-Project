@@ -193,7 +193,7 @@ public class Register extends JFrame implements ActionListener, MouseListener
 		if(ae.getSource()==logBacBtn)
 		{
 			this.setVisible(false);
-			LoginPage lp1 = new Loginpage();
+			LoginPage lp1 = new LoginPage();
             lp1.setVisible(true);
 		}
 		else if(ae.getSource()==regisBtn)
@@ -215,7 +215,7 @@ public class Register extends JFrame implements ActionListener, MouseListener
 					Account a1=new Account(s1,s2,s3);
 					a1.addAccount();
 					this.setVisible(false);
-					LoginPage lp1 = new Loginpage();
+					LoginPage lp1 = new LoginPage();
 					lp1.setVisible(true);
 					
 				}

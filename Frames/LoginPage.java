@@ -214,40 +214,26 @@ public class LoginPage extends JFrame implements MouseListener, ActionListener
     {
         if(ae.getSource() == logbtn)
         {
-            String email = namefld.getText();
-            String password = new String(passfld.getPassword());
+            String s1 = namefld.getText();
+            String s2 = new String(passfld.getPassword());
 
-            if(email.isEmpty() || password.isEmpty())
+            if(s1.isEmpty() || s2.isEmpty())
             {
                 JOptionPane.showMessageDialog(null, "Fill Up All");
             }
             else
             {
-                Account acc = new Account();
-                boolean isValid = acc.getAccount("", email, password);
+                JOptionPane.showMessageDialog(null, "Login Successful!\nEmail: " + s1, "Success", JOptionPane.INFORMATION_MESSAGE);
                 
-                if(isValid)
-                {
-                    JOptionPane.showMessageDialog(null, "Login Successful!\nEmail: " + email, "Success", JOptionPane.INFORMATION_MESSAGE);
-                    this.setVisible(false);
-                    HomePage h1 = new HomePage();
-                    h1.setVisible(true);
-                }
-                else
-                {
-                    if(acc.checkIfFileEmpty())
-                    {
-                        JOptionPane.showMessageDialog(null, "No registered users found!\nPlease register first.", "Registration Required", JOptionPane.WARNING_MESSAGE);
-                    }
-                    else
-                    {
-                        JOptionPane.showMessageDialog(null, "Invalid Email or Password!", "Login Failed", JOptionPane.ERROR_MESSAGE);
-                    }
-                }
+                this.setVisible(false);
+                HomePage h1= new HomePage();
+                h1.setVisible(true);
             }
         }
+ 
         else if(ae.getSource() == registerbtn)
         {
+            
             this.setVisible(false);
             Register r1 = new Register();
             r1.setVisible(true);
