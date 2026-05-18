@@ -225,7 +225,7 @@ public class LoginPage extends JFrame implements MouseListener, ActionListener
             {
                     Account acc = new Account();
             
-            if(acc.getAccount(s1, s2)) // ✅ Simple check
+            if(acc.getAccount(s1, s2)) 
             {
                 Account.currentUser = s1;
                 JOptionPane.showMessageDialog(null, "Login Successful!");
