@@ -63,7 +63,10 @@ public class R3	extends JFrame implements ActionListener
         backBtn.addActionListener(this);
         panelA.add(backBtn);
         
-        // --- Item 1: Kacchi ---
+
+        
+        
+        //  Item 1: Kacchi 
         itemLbl1 = new JLabel("Kacchi");
         itemLbl1.setBounds(100, 120, 200, 30);
         itemLbl1.setFont(new Font("Cambria", Font.PLAIN, 18));
@@ -82,7 +85,7 @@ public class R3	extends JFrame implements ActionListener
         qtyFld1.setBounds(720, 120, 50, 30);
         panelA.add(qtyFld1);
         
-        // --- Item 2: Tehari ---
+        // Item 2: Tehari 
         itemLbl2 = new JLabel("Tehari");
         itemLbl2.setBounds(100, 200, 200, 30);
         itemLbl2.setFont(new Font("Cambria", Font.PLAIN, 18));
@@ -124,7 +127,8 @@ public class R3	extends JFrame implements ActionListener
 	{
         if (ae.getSource() == backBtn) {
             this.dispose();
-            // new HomePage().setVisible(true); NEED TO ADD
+            HomePage h1=new HomePage();
+            h1.setVisible(true);
         } 
         else if (ae.getSource() == buyNowBtn) {
             placeOrder();
@@ -178,6 +182,7 @@ public class R3	extends JFrame implements ActionListener
             Checkout checkoutFrame = new Checkout(itemNames, itemPrices, itemQuantities, grandTotal);
             checkoutFrame.setVisible(true);
             this.dispose(); // Close restaurant frame
+            
             
         } 
 		

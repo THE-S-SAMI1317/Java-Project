@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import Entries.*;
 
 
+
 public class HomePage extends JFrame 
 {
     
@@ -18,18 +19,18 @@ public class HomePage extends JFrame
         setSize(1000, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        
+             
      
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new BorderLayout());
         topPanel.setPreferredSize(new Dimension(1000, 60));
         topPanel.setBackground(Color.WHITE);
-    
         JLabel titleLabel = new JLabel("HUNGRY TYGER");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
         titleLabel.setForeground(new Color(200, 50, 50));
         titleLabel.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 0));
         topPanel.add(titleLabel, BorderLayout.WEST);
+        titleLabel.setBounds(400, 0, 450, 450);
         
     
         
@@ -47,6 +48,9 @@ public class HomePage extends JFrame
         profileBtn.setFont(new Font("Arial", Font.PLAIN, 12));
         profileBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         profileBtn.setMaximumSize(new Dimension(80, 70));
+
+        profileBtn.setFocusPainted(false);      // Removes focus rectangle
+       
 
     profileBtn.addActionListener(new ActionListener() 
     {
@@ -188,19 +192,19 @@ public class HomePage extends JFrame
         imageLabel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
         
         try {
-            ImageIcon icon = null;
-            java.net.URL imgURL = getClass().getResource(imagePath);
-            if (imgURL != null) {
-                icon = new ImageIcon(imgURL);
-            } else {
-                icon = new ImageIcon(imagePath);
-            }
-            Image img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-            imageLabel.setIcon(new ImageIcon(img));
-        } catch (Exception e) {
-            imageLabel.setText("Image\nPlaceholder");
-            imageLabel.setVerticalTextPosition(SwingConstants.CENTER);
-            imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+    
+         ImageIcon icon = new ImageIcon(getClass().getResource(imagePath));
+    
+    
+          Image img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+    
+   
+           imageLabel.setIcon(new ImageIcon(img));
+        } 
+        catch (Exception e) {
+        
+        imageLabel.setText("No Image");
+        imageLabel.setHorizontalAlignment(SwingConstants.CENTER);
         }
         
         imageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -238,6 +242,7 @@ panel.addMouseListener(new MouseAdapter() {
         }
         else if(name.equals("Kacchi Vai")) {
             R3 r = new R3(); 
+            HomePage.this.setVisible(false);
             r.setVisible(true);
         }
         else if(name.equals("KFC")) {

@@ -60,6 +60,8 @@ public class EmptyCart extends JFrame implements ActionListener
         backBtn.setForeground(Color.WHITE);
         backBtn.setFont(new Font("Cambria", Font.BOLD, 18));
         backBtn.addActionListener(this);
+        backBtn.setFocusPainted(false);    
+
         panel.add(backBtn);
 
         this.add(panel);
@@ -69,8 +71,8 @@ public class EmptyCart extends JFrame implements ActionListener
     {
         if(e.getSource() == backBtn) 
         {
-            this.dispose(); // Close Empty Cart page
-            new HomePage().setVisible(true); // Open Home Page
+            this.setVisible(false); 
+            new HomePage().setVisible(true); 
         }
     }
 }
