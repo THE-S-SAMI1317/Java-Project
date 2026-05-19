@@ -169,7 +169,7 @@ public class Checkout extends JFrame implements ActionListener
         
         // Thank You Message
         thankYouLbl = new JLabel("Thank you for your order!");
-        thankYouLbl.setBounds(225, totalY + 70, 350, 30);
+        thankYouLbl.setBounds(285, totalY + 70, 350, 30);
         thankYouLbl.setFont(new Font("Cambria", Font.PLAIN, 16));
         thankYouLbl.setForeground(dark);
         panelA.add(thankYouLbl);
@@ -190,28 +190,18 @@ public class Checkout extends JFrame implements ActionListener
     }
 
 
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e)
+    {
         if (e.getSource() == backBtn) {
 
            
             this.dispose();
-            new Billing().setVisible(true);
+            
+            new HomePage().setVisible(true);
         } 
         else if (e.getSource() == confirmBtn) {
-            int confirm = JOptionPane.showConfirmDialog(
-                this, 
-                "Confirm your order?\nTotal: Tk. " + finalTotal,
-                "Confirm Order",
-                JOptionPane.YES_NO_OPTION
-            );
-            
-            if(confirm == JOptionPane.YES_OPTION) {
-                JOptionPane.showMessageDialog(
-                    this, 
-                    "Order Placed Successfully!\nThank you for choosing Hungry Tyger!",
-                    "Order Confirmed",
-                    JOptionPane.INFORMATION_MESSAGE
-                );
+            Billing b1 = new Billing();
+            b1.setVisible(true);
                 
                 this.dispose();
                 // Go back to home or restaurant
@@ -219,4 +209,4 @@ public class Checkout extends JFrame implements ActionListener
             }
         }
     }
-}
+

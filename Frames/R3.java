@@ -111,7 +111,7 @@ public class R3	extends JFrame implements ActionListener
         panelA.add(buyNowBtn);
         
         // Total Label
-        totalLbl = new JLabel("Total: Tk. 0");
+        totalLbl = new JLabel("");
         totalLbl.setBounds(350, 380, 300, 40);
         totalLbl.setFont(new Font("Cambria", Font.BOLD, 20));
         panelA.add(totalLbl);

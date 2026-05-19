@@ -14,6 +14,7 @@ Font myfont,btnfont;
 ImageIcon img;
 JLabel imglbl;
 
+
 public WelcomeFrame()
 {
 	super("Welcome");
@@ -32,11 +33,17 @@ public WelcomeFrame()
 	panel.setBackground(mycolor);
 	
 	welcomelbl=new JLabel("Welcome");
-	welcomelbl.setBounds(365,150,170,50);
+	welcomelbl.setBounds(365,40,170,50);
 	welcomelbl.setFont(myfont);
 
 	panel.add(welcomelbl);
 	
+	//Logo
+	img = new ImageIcon(getClass().getResource("/Resources/300x200.png"));
+    imglbl = new JLabel(img);
+    imglbl.setBounds(250, 60, 350, 250);
+    panel.add(imglbl);
+
 	startbtn=new JButton("Get started");
 	startbtn.setBounds(350,300,180,45);
 	startbtn.setFont(btnfont);

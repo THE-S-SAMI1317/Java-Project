@@ -8,14 +8,14 @@ import Entries.*;
 
 public class Register extends JFrame implements ActionListener, MouseListener
 {
-	JLabel logoLbl, regisLbl, uNameLbl, uMailLbl, passLbl, rePassLbl, messageRLbl, qLogLbl;
+	JLabel logoLbl, regisLbl, uNameLbl, uMailLbl, passLbl, rePassLbl, messageRLbl, qLogLbl, imglbl;
 	JPasswordField passFld, rePassFld;
 	JTextField uNameFld, uMailFld;
 	JButton regisBtn, logBacBtn;
 	JPanel panel, rightPanel, leftPanel;
 	Color primaryOrange, secondryYellow, backgrdWhite1, backgrdWhite2, txtBlu;
 	Font logoFnt, pgTitleFnt, secTitleFnt, txtFnt, reBtnFnt;
-	ImageIcon logoIcon;
+	ImageIcon img;
 	
 	public Register()
 	{
@@ -48,6 +48,10 @@ public class Register extends JFrame implements ActionListener, MouseListener
 		leftPanel.setBackground(backgrdWhite1);
 		leftPanel.setBounds(0, 0, 450, 450);
 		
+		img = new ImageIcon(getClass().getResource("/Resources/300x200.png"));
+        imglbl = new JLabel(img);
+        imglbl.setBounds(50, 100, 350, 250);
+        leftPanel.add(imglbl);
 		// Right Panel 
 		rightPanel = new JPanel();
 		rightPanel.setLayout(null);

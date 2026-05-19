@@ -32,15 +32,7 @@ public class HomePage extends JFrame
         titleLabel.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 0));
         topPanel.add(titleLabel, BorderLayout.WEST);
         
-        // Set Location Button
-        JButton setLocationBtn = new JButton("Set Location");
-        setLocationBtn.setFont(new Font("Cambria", Font.BOLD, 16));
-        setLocationBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Opening Profile Page...");
-            }
-        });
-        topPanel.add(setLocationBtn, BorderLayout.EAST);
+    
         
         add(topPanel, BorderLayout.NORTH);
         
@@ -82,8 +74,8 @@ public class HomePage extends JFrame
         public void actionPerformed(ActionEvent e)
         {
             
-             Checkout c1=new Checkout();
-             c1.setVisible(true);
+            EmptyCart e1 =new EmptyCart();
+            e1.setVisible(true);
             HomePage.this.dispose();
             
 
@@ -245,7 +237,7 @@ panel.addMouseListener(new MouseAdapter() {
             R2 r = new R2();  // Create R5.java for Pizza Hut
             r.setVisible(true);
         }
-        else if(name.equals("Kacchi Bhai")) {
+        else if(name.equals("Kacchi Vai")) {
             R3 r = new R3();  // Create R6.java for Kacchi Bhai
             r.setVisible(true);
         }
