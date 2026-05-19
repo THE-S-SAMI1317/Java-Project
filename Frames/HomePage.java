@@ -19,13 +19,12 @@ public class HomePage extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         
-        // ========== TOP PANEL ==========
+     
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new BorderLayout());
         topPanel.setPreferredSize(new Dimension(1000, 60));
         topPanel.setBackground(Color.WHITE);
-        
-        // Title - HUNGRY TYGER
+    
         JLabel titleLabel = new JLabel("HUNGRY TYGER");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
         titleLabel.setForeground(new Color(200, 50, 50));
@@ -36,7 +35,7 @@ public class HomePage extends JFrame
         
         add(topPanel, BorderLayout.NORTH);
         
-        // ========== SIDEBAR PANEL ==========
+     
         JPanel sidebarPanel = new JPanel();
         sidebarPanel.setLayout(new BoxLayout(sidebarPanel, BoxLayout.Y_AXIS));
         sidebarPanel.setPreferredSize(new Dimension(100, 640));
@@ -102,13 +101,13 @@ public class HomePage extends JFrame
         
         add(sidebarPanel, BorderLayout.WEST);
         
-        // ========== MAIN CONTENT PANEL ==========
+     
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         mainPanel.setBackground(new Color(253, 245, 230));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         
-        // --- Popular Categories Section ---
+        //  Popular Categories Section 
         JLabel categoriesTitle = new JLabel("Popular categories");
         categoriesTitle.setFont(new Font("Arial", Font.BOLD, 20));
         categoriesTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -119,7 +118,7 @@ public class HomePage extends JFrame
         JPanel categoriesGrid = new JPanel();
         categoriesGrid.setBackground(new Color(253, 245, 230));
         
-        // Burger -
+        // Burger 
         JPanel burgerPanel = createFoodItem("Burger", "/Resources/Burger.jpg");
         categoriesGrid.add(burgerPanel);
         
@@ -127,7 +126,7 @@ public class HomePage extends JFrame
         JPanel pizzaPanel = createFoodItem("Pizza", "/Resources/Pizza.jpg");
         categoriesGrid.add(pizzaPanel);
         
-        // Drinks -
+        // Drinks 
         JPanel drinksPanel = createFoodItem("Drinks", "/Resources/Drinks.jpg");
         categoriesGrid.add(drinksPanel);
         
@@ -138,7 +137,7 @@ public class HomePage extends JFrame
         mainPanel.add(categoriesGrid);
         mainPanel.add(Box.createRigidArea(new Dimension(0, 30)));
         
-        // --- Popular Restaurants Section ---
+        // Popular Restaurants Section 
         JLabel restaurantsTitle = new JLabel("Popular restaurants");
         restaurantsTitle.setFont(new Font("Arial", Font.BOLD, 20));
         restaurantsTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -167,7 +166,7 @@ public class HomePage extends JFrame
         
         mainPanel.add(restaurantsGrid);
         
-        // Add scroll pane for main panel
+    
         JScrollPane scrollPane = new JScrollPane(mainPanel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         add(scrollPane, BorderLayout.CENTER);
@@ -175,7 +174,7 @@ public class HomePage extends JFrame
         setLocationRelativeTo(null);
     }
     
-    // Method expects 2 parameters: name and imagePath
+    // name and imagePath
     private JPanel createFoodItem(String name, String imagePath) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -216,37 +215,37 @@ public class HomePage extends JFrame
         
 panel.addMouseListener(new MouseAdapter() {
     public void mouseClicked(MouseEvent e) {
-        // ✅ Check which item was clicked
+       
         if(name.equals("Burger")) {
             R1 r = new R1();
             r.setVisible(true);
         }
         else if(name.equals("Pizza")) {
-            R2 r = new R2();  // Create R2.java for Pizza
+            R2 r = new R2();  
             r.setVisible(true);
         }
         else if(name.equals("Drinks")) {
-            R4 r = new R4();  // Create R3.java for Drinks
+            R4 r = new R4();  
             r.setVisible(true);
         }
         else if(name.equals("Kacchi")) {
-            R3 r = new R3();  // Create R4.java for Kacchi
+            R3 r = new R3();  
             r.setVisible(true);
         }
         else if(name.equals("Pizza Hut")) {
-            R2 r = new R2();  // Create R5.java for Pizza Hut
+            R2 r = new R2();  
             r.setVisible(true);
         }
         else if(name.equals("Kacchi Vai")) {
-            R3 r = new R3();  // Create R6.java for Kacchi Bhai
+            R3 r = new R3(); 
             r.setVisible(true);
         }
         else if(name.equals("KFC")) {
-            R1 r = new R1();  // Create R7.java for KFC
+            R1 r = new R1();  
             r.setVisible(true);
         }
         else if(name.equals("AIUB Canteen")) {
-            R4 r = new R4();  // Create R8.java for AIUB Canteen
+            R4 r = new R4();  
             r.setVisible(true);
         }
     }

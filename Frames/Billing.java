@@ -154,7 +154,7 @@ public class Billing extends JFrame implements ActionListener
         delGroup.add(basicBtn);
         expBtn.setSelected(true);
         
-        // ✅ CONFIRM BUTTON (Moved to Bottom-Right)
+        
         confirmBtn = new JButton("Confirm Order");
         confirmBtn.setBounds(520, 550, 300, 50);
         confirmBtn.setBackground(primaryOrange);
@@ -184,7 +184,7 @@ public class Billing extends JFrame implements ActionListener
             }
             else
             {
-                // ✅ Show confirmation popup
+                
                 JOptionPane.showMessageDialog(this, 
                     "Congratulations!\nOrder has been confirmed\n\nTransaction ID: TXN12345", 
                     "Order Confirmed", 

@@ -165,7 +165,7 @@ public class Account
 		}
 	}
 	
-	// ✅ ADD THIS: Update account method
+	
 	public void updateAccount(String oldName, String newName, String newMail, String newPass)
 	{
 		try
@@ -207,7 +207,7 @@ public class Account
 		}
 	}
 	
-	// ✅ ADD THIS: Check if file is empty
+	
 	public boolean checkIfFileEmpty()
 	{
 		try
