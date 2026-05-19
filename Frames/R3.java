@@ -127,8 +127,7 @@ public class R3	extends JFrame implements ActionListener
 	{
         if (ae.getSource() == backBtn) {
             this.dispose();
-            HomePage h1=new HomePage();
-            h1.setVisible(true);
+            new HomePage().setVisible(true);
         } 
         else if (ae.getSource() == buyNowBtn) {
             placeOrder();

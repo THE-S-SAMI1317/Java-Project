@@ -222,22 +222,27 @@ panel.addMouseListener(new MouseAdapter() {
        
         if(name.equals("Burger")) {
             R1 r = new R1();
+            HomePage.this.setVisible(false);
             r.setVisible(true);
         }
         else if(name.equals("Pizza")) {
-            R2 r = new R2();  
+            R2 r = new R2();
+            HomePage.this.setVisible(false);  
             r.setVisible(true);
         }
         else if(name.equals("Drinks")) {
-            R4 r = new R4();  
+            R4 r = new R4();
+            HomePage.this.setVisible(false);  
             r.setVisible(true);
         }
         else if(name.equals("Kacchi")) {
-            R3 r = new R3();  
+            R3 r = new R3();
+            HomePage.this.setVisible(false);  
             r.setVisible(true);
         }
         else if(name.equals("Pizza Hut")) {
             R2 r = new R2();  
+            HomePage.this.setVisible(false);
             r.setVisible(true);
         }
         else if(name.equals("Kacchi Vai")) {
@@ -246,11 +251,13 @@ panel.addMouseListener(new MouseAdapter() {
             r.setVisible(true);
         }
         else if(name.equals("KFC")) {
-            R1 r = new R1();  
+            R1 r = new R1();
+            HomePage.this.setVisible(false);  
             r.setVisible(true);
         }
         else if(name.equals("AIUB Canteen")) {
-            R4 r = new R4();  
+            R4 r = new R4(); 
+            HomePage.this.setVisible(false); 
             r.setVisible(true);
         }
     }

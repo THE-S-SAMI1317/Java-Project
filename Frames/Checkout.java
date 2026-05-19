@@ -204,8 +204,7 @@ public class Checkout extends JFrame implements ActionListener
             b1.setVisible(true);
                 
                 this.dispose();
-                // Go back to home or restaurant
-                // new HomePage().setVisible(true);
+                
             }
         }
     }

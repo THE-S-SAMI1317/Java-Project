@@ -124,7 +124,7 @@ public class R4	extends JFrame implements ActionListener
 	{
         if (ae.getSource() == backBtn) {
             this.dispose();
-            // new HomePage().setVisible(true); NEED TO  ADD
+            new HomePage().setVisible(true);
         } 
         else if (ae.getSource() == buyNowBtn) {
             placeOrder();
