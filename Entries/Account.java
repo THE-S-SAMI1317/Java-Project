@@ -7,238 +7,152 @@ import Frames.*;
 
 public class Account
 {
-	public static String currentUser = "";  //Holds logged-in username
-	
-	private String userName;
-	private String userMail;
-	private String pass;
-	File entryFile;
-	FileWriter enWrite, reWrite;
-	Scanner sc;
-	
-	public Account()
+    public static String currentUser = "";
+    
+    private String userName;
+    private String userMail;
+    private String pass;
+    
+    public Account() 
 	{
 		
 	}
-	
-	public Account(String userName, String userMail, String pass)
-	{
-		this.userName=userName;
-		this.userMail=userMail;
-		this.pass=pass;
+    
+    public Account(String userName, String userMail, String pass)
+    {
+        this.userName = userName;
+        this.userMail = userMail;
+        this.pass = pass;
+    }
+    
+   
+    public void setUserName(String userName)
+	{ 
+		this.userName = userName;
 	}
-	
-	public void setUserName(String userName)
+    public void setUserMail(String userMail) 
 	{
-		this.userName=userName;
+		this.userMail = userMail; 
 	}
-	
-	public void setUserMail(String userMail)
+    public void setPass(String pass)
 	{
-		this.userMail=userMail;
+		this.pass = pass;
 	}
-	
-	public void setPass(String pass)
+    
+    
+    public String getUserName() 
 	{
-		this.pass=pass;
+		return userName; 
 	}
-	
-	public String getUserName()
-	{
-		return userName;
-	}
-	
-	public String getUserMail()
+    public String getUserMail() 
 	{
 		return userMail;
 	}
-	
-	public String getPass()
+    public String getPass()
 	{
 		return pass;
 	}
-	
-	public void addAccount()
-	{
-		try
-		{
-			entryFile = new File("./Data/Data.txt");
-
-			if (entryFile.getParentFile() != null && !entryFile.getParentFile().exists()) {
-				entryFile.getParentFile().mkdirs();
-			}
-
-			entryFile.createNewFile();
-			
-			enWrite = new FileWriter(entryFile,true);
-			
-			enWrite.write(getUserName()+"\t");
-			enWrite.write(getUserMail()+"\t");
-			enWrite.write(getPass()+"\n");
-			
-			
-			enWrite.flush();
-			enWrite.close();
-			
-		}
-		catch(IOException ioe)
-		{
-			ioe.printStackTrace();
-		}
-	}
-
-
-	public boolean getAccount(String email, String password)
-{
-    try 
+    
+    // Add new account 
+    public void addAccount()
     {
-        File f = new File("./Data/Data.txt");
-        
-        if(!f.exists()) {
-            return false;
-        }
-        
-        Scanner sc = new Scanner(f);
-        
-        while(sc.hasNextLine()) 
+        try
         {
-            String line = sc.nextLine();
-            String[] data = line.split("\t");
-            
-            if(data.length >= 3) 
+            FileWriter fw = new FileWriter("./Data/Data.txt", true);
+            fw.write(userName + "\t" + userMail + "\t" + pass + "\n");
+            fw.close();
+        }
+        catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+    }
+    
+    
+    public boolean getAccount(String umail, String upass)
+    {
+        try
+        {
+            Scanner sc = new Scanner(new File("./Data/Data.txt"));
+            while(sc.hasNextLine())
             {
-                // data[1]=email, data[2]=password
-                if(data[1].equals(email) && data[2].equals(password)) 
+                String[] data = sc.nextLine().split("\t");
+                
+                if(data.length >= 3 && 
+                   
+                   data[1].equals(umail) && 
+                   data[2].equals(upass))
                 {
                     sc.close();
                     return true;
                 }
             }
+            sc.close();
         }
-        sc.close();
-    } 
-    catch(Exception e) 
-    {
-        e.printStackTrace();
+        catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+        return false;
     }
     
-    return false;
-}
-	
-	
-	public void deleteAccount(String userName, String userMail, String userPass)
-	{
-		try
+    
+    public void updateAccount(String oldUserName, String newName, String newMail, String newPass)
+    {
+        try
+        {
+            Scanner sc = new Scanner(new File("./Data/Data.txt"));
+            String allData = "";
+            
+            while(sc.hasNextLine())
+            {
+                String line = sc.nextLine();
+                String[] data = line.split("\t");
+                
+                if(data.length >= 3 && data[0].equals(oldUserName))
+                    allData += newName + "\t" + newMail + "\t" + newPass + "\n";
+                else
+                    allData += line + "\n";
+            }
+            sc.close();
+            
+            FileWriter fw = new FileWriter("./Data/Data.txt");
+            fw.write(allData);
+            fw.close();
+        }
+        catch(Exception e)
 		{
-			File oldFile = new File("./Data/Data.txt");
-			File tempFile = new File("./Data/temp.txt");
-			
-			Scanner sc = new Scanner(oldFile);
-			FileWriter fw = new FileWriter(tempFile);
-			
-			while(sc.hasNextLine())
-			{
-				String line = sc.nextLine();
-				String[] value = line.split("\t");
-				
-				if(value.length >= 3)
-				{
-					// Write all lines EXCEPT the one to delete
-					if(!(value[0].equals(userName) && value[1].equals(userMail) && value[2].equals(userPass)))
-					{
-						fw.write(line + "\n");
-					}
-				}
-			}
-			
-			sc.close();
-			fw.flush();
-			fw.close();
-			
-			// Replace old file with new file
-			oldFile.delete();
-			tempFile.renameTo(oldFile);
+			e.printStackTrace(); 
 		}
-		catch(Exception e)
+    }
+    
+    
+    public void deleteAccount(String userName, String userMail, String pass)
+    {
+        try
+        {
+            Scanner sc = new Scanner(new File("./Data/Data.txt"));
+            String allData = "";
+            
+            while(sc.hasNextLine())
+            {
+                String line = sc.nextLine();
+                String[] data = line.split("\t");
+                
+                if(data.length < 3 || !data[0].equals(userName) || !data[1].equals(userMail) || !data[2].equals(pass))
+                {
+                    allData += line + "\n";
+                }
+            }
+            sc.close();
+            
+            FileWriter fw = new FileWriter("./Data/Data.txt");
+            fw.write(allData);
+            fw.close();
+        }
+        catch(Exception e)
 		{
-			e.printStackTrace();
+			e.printStackTrace(); 
 		}
-	}
-	
-	
-	public void updateAccount(String oldName, String newName, String newMail, String newPass)
-	{
-		try
-		{
-			File oldFile = new File("./Data/Data.txt");
-			File tempFile = new File("./Data/temp.txt");
-			
-			Scanner sc = new Scanner(oldFile);
-			FileWriter fw = new FileWriter(tempFile);
-			
-			while(sc.hasNextLine())
-			{
-				String line = sc.nextLine();
-				String[] value = line.split("\t");
-				
-				if(value.length >= 3 && value[0].equals(oldName))
-				{
-					// Update this user's data
-					fw.write(newName + "\t" + newMail + "\t" + newPass + "\n");
-				}
-				else
-				{
-					// Keep other users unchanged
-					fw.write(line + "\n");
-				}
-			}
-			
-			sc.close();
-			fw.flush();
-			fw.close();
-			
-			// Replace old file with updated file
-			oldFile.delete();
-			tempFile.renameTo(oldFile);
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
-	
-	
-	public boolean checkIfFileEmpty()
-	{
-		try
-		{
-			entryFile = new File("./Data/Data.txt");
-			
-			if(!entryFile.exists())
-			{
-				return true;
-			}
-			
-			sc = new Scanner(entryFile);
-			boolean hasContent = false;
-			
-			while(sc.hasNextLine())
-			{
-				String line = sc.nextLine();
-				if(!line.trim().isEmpty())
-				{
-					hasContent = true;
-					break;
-				}
-			}
-			sc.close();
-			
-			return !hasContent;
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-			return true;
-		}
-	}
+    }
 }
