@@ -76,7 +76,7 @@ public class Account
             Scanner sc = new Scanner(new File("./Data/Data.txt"));
             while(sc.hasNextLine())
             {
-                String[] data = sc.nextLine().split("\t");
+                String data[] = sc.nextLine().split("\t");
                 
                 if(data.length >= 3 && data[1].equals(umail) && data[2].equals(upass))
                 {
