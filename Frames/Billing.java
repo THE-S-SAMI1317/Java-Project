@@ -191,6 +191,8 @@ public class Billing extends JFrame implements ActionListener
                     JOptionPane.INFORMATION_MESSAGE);
                 
                 this.setVisible(false);
+                HomePage h1 =new HomePage();
+                h1.setVisible(true);
             }
         }
     }
