@@ -247,6 +247,6 @@ public class Profile extends JFrame implements ActionListener, MouseListener
 		}
 	}
 	
-	 //cons for profile details
+	 
 }
 		
