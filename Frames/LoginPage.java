@@ -64,7 +64,7 @@ public class LoginPage extends JFrame implements MouseListener, ActionListener
         leftPanel.add(imglbl);
 
        
-        taglineLbl = new JLabel("");  // Start empty for animation
+        taglineLbl = new JLabel("Explore a vast amount of restaurants to satiate your hunger");  
         taglineLbl.setBounds(30, 360, 400, 30);
         taglineLbl.setFont(new Font("Cambria", Font.ITALIC, 14));
         taglineLbl.setForeground(titleColor);
@@ -146,7 +146,7 @@ public class LoginPage extends JFrame implements MouseListener, ActionListener
 
         
         this.setVisible(true);
-        startTypingAnimation();  
+         
 
         panel.add(rightPanel);
 
@@ -155,25 +155,7 @@ public class LoginPage extends JFrame implements MouseListener, ActionListener
     }
 
     
-    private void startTypingAnimation() {
-        typingTimer = new Timer(50, new ActionListener() 
-        {
-            @Override
-            public void actionPerformed(ActionEvent e) 
-            {
-                if (charIndex < fullText.length()) {
-                    currentText += fullText.charAt(charIndex);
-                    taglineLbl.setText(currentText);
-                    charIndex++;
-                } else 
-                    {
-                         charIndex = 0;
-                         currentText = "";
-                    }
-            }
-        });
-        typingTimer.start();
-    }
+
 
     public void mouseClicked(MouseEvent me) {}
     public void mousePressed(MouseEvent me) {}
