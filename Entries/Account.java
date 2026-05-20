@@ -78,10 +78,7 @@ public class Account
             {
                 String[] data = sc.nextLine().split("\t");
                 
-                if(data.length >= 3 && 
-                   
-                   data[1].equals(umail) && 
-                   data[2].equals(upass))
+                if(data.length >= 3 && data[1].equals(umail) && data[2].equals(upass))
                 {
                     sc.close();
                     return true;
@@ -107,7 +104,7 @@ public class Account
             while(sc.hasNextLine())
             {
                 String line = sc.nextLine();
-                String[] data = line.split("\t");
+                String data[] = line.split("\t");
                 
                 if(data.length >= 3 && data[0].equals(oldUserName))
                     allData += newName + "\t" + newMail + "\t" + newPass + "\n";
@@ -137,7 +134,7 @@ public class Account
             while(sc.hasNextLine())
             {
                 String line = sc.nextLine();
-                String[] data = line.split("\t");
+                String data[] = line.split("\t");
                 
                 if(data.length < 3 || !data[0].equals(userName) || !data[1].equals(userMail) || !data[2].equals(pass))
                 {
